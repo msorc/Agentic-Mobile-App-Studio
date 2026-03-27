@@ -13,19 +13,19 @@ Before writing any code:
 
 1. **Read the design document:**
    - Identify what's specified vs. what's ambiguous
-   - Note any deviations from standard patterns
+   - Note any deviations from Flutter/Dart standard patterns
    - Flag potential implementation challenges
 
 2. **Ask architecture questions:**
-   - "Should this be a static utility class or a scene node?"
-   - "Where should [data] live? (CharacterStats? Equipment class? Config file?)"
+   - "Should this be a StatelessWidget or StatefulWidget?"
+   - "Where should [data] live? (Provider, Riverpod, BLoC, model class?)"
    - "The design doc doesn't specify [edge case]. What should happen when...?"
-   - "This will require changes to [other system]. Should I coordinate with that first?"
+   - "This will require changes to [other feature]. Should I coordinate with that first?"
    - *Use `AskUserQuestion` to batch constrained architecture questions*
 
 3. **Propose architecture before implementing:**
-   - Show class structure, file organization, data flow
-   - Explain WHY you're recommending this approach (patterns, engine conventions, maintainability)
+   - Show widget structure, file organization, state management approach
+   - Explain WHY you're recommending this approach (patterns, Flutter conventions, maintainability)
    - Highlight trade-offs: "This approach is simpler but less flexible" vs "This is more complex but more extensible"
    - Ask: "Does this match your expectations? Any changes before I write the code?"
 
@@ -48,44 +48,71 @@ Before writing any code:
 #### Example Interaction Pattern
 
 ```
-User: "Implement the damage calculation system per design/gdd/combat-system.md"
+User: "Implement the authentication service per design/features/auth-service.md"
 
 You (read and analyze):
 [Reads design doc]
 
-"I've read the combat system design. The damage formula is:
- final_damage = base_damage * weapon_multiplier * crit_multiplier * (1 - resistance)
+"I've read the auth service design. The authentication flow is:
+ email/password → token → user profile → cached session
 
 Before I implement, a few architectural questions:
- 1. Should DamageCalculator be a static utility or an autoload singleton?
- 2. Where should weapon data live? (Equipment class? CharacterStats? Separate WeaponData resource?)
- 3. The design doc doesn't specify rounding behavior. Round down, round up, or keep decimal damage?
- 4. Should we emit a signal when damage is calculated (for VFX/SFX hookup)?"
+ 1. Should AuthService be a singleton, a Provider, or a Riverpod provider?
+ 2. Where should token storage live? (SharedPreferences, flutter_secure_storage?)
+ 3. The design doc doesn't specify session refresh behavior. Auto-refresh or manual?
+ 4. Should we emit state changes via ChangeNotifier/Stream/StateNotifier?"
 
-User: "Static utility in src/gameplay/combat/. Weapon data in Equipment class. Round down to int. Yes, emit signal."
+User: "Riverpod provider. flutter_secure_storage. Auto-refresh on 401. StateNotifier."
 
 You (propose architecture):
 "Got it. Here's the proposed structure:
 
+```dart
+// lib/features/auth/data/auth_service.dart
+class AuthService {
+  final AuthRepository _repository;
+  final SecureStorage _secureStorage;
+  
+  AuthService({required AuthRepository repository, required SecureStorage secureStorage});
+  
+  Future<AuthResult> signIn(String email, String password);
+  Future<void> signOut();
+  Future<User?> getCurrentUser();
+  Future<bool> refreshToken();
+}
+
+@riverpod
+AuthService authService(Ref ref) {
+  return AuthService(
+    repository: ref.watch(authRepositoryProvider),
+    secureStorage: ref.watch(secureStorageProvider),
+  );
+}
+
+// lib/features/auth/presentation/auth_state.dart
+class AuthState {
+  final User? user;
+  final bool isLoading;
+  final String? error;
+}
+
+class AuthNotifier extends StateNotifier<AuthState> {
+  final AuthService _service;
+  
+  AuthNotifier(this._service) : super(const AuthState());
+  
+  Future<void> signIn(String email, String password) async { ... }
+  Future<void> signOut() async { ... }
+}
+
+@riverpod
+class AuthController extends _$AuthController {
+  @override
+  Future<AuthState> build() async { ... }
+}
 ```
-# src/gameplay/combat/damage_calculator.gd
-class_name DamageCalculator
-extends RefCounted
 
-signal damage_calculated(target: Node, final_damage: int, is_crit: bool)
-
-static func calculate_damage(attacker: CharacterStats, target: CharacterStats, weapon: Equipment) -> int:
-    var base_damage: float = attacker.get_attack_power()
-    var weapon_mult: float = weapon.damage_multiplier
-    var crit_mult: float = 2.0 if _roll_crit(attacker.crit_chance) else 1.0
-    var resistance: float = target.get_resistance(weapon.damage_type)
-
-    var final_damage: int = floor(base_damage * weapon_mult * crit_mult * (1.0 - resistance))
-    damage_calculated.emit(target, final_damage, crit_mult > 1.0)
-    return final_damage
-```
-
-Constants like crit_mult (2.0) will move to assets/data/combat_config.json per the data-driven rule.
+Token refresh logic (auto on 401) will use an AuthInterceptor per the Flutter CI/CD rule.
 
 Does this match your expectations? Any changes before I write the code?"
 
@@ -93,23 +120,28 @@ User: "Looks good. Implement it."
 
 You (implement):
 [Writes code]
-[gameplay-code rule flags hardcoded crit multiplier]
+[flutter-code rule flags missing null safety]
 
-"Implemented src/gameplay/combat/damage_calculator.gd.
+"Implemented lib/features/auth/.
 
-The gameplay-code rule flagged one issue: crit multiplier was hardcoded (2.0).
-I moved it to assets/data/combat_config.json as 'critical_damage_multiplier': 2.0.
+The flutter-code rule flagged one issue: missing null safety on the User?. I fixed it.
 
-File is ready. Would you like me to:
- A) Write tests now (recommended)
+Files created:
+- data/auth_service.dart
+- data/auth_repository.dart
+- presentation/auth_state.dart
+- presentation/auth_controller.dart
+
+Would you like me to:
+ A) Write widget tests now (recommended)
  B) Let you review the code first
  C) Run /code-review for architecture validation"
 
 User: "A, write tests"
 
-You: [creates tests/combat/test_damage_calculator.gd]
-     "Created test file with 6 test cases covering the acceptance criteria from the design doc.
-      All tests passing. Ready to commit?"
+You: [creates test/features/auth/auth_service_test.dart]
+     "Created test file with 8 test cases covering the acceptance criteria.
+      All tests passing. Ready for next feature?"
 ```
 
 #### Collaborative Mindset
@@ -132,7 +164,7 @@ Follow the **Explain → Capture** pattern:
 
 **When to use it:**
 - Architecture questions with constrained answers (step 2)
-- Next-step choices ("Write tests, review code, or run code-review?")
+- Next-step choices ("Write tests, review code, or continue?")
 - Batch up to 4 independent architecture questions in one call
 
 **When NOT to use it:**
@@ -143,10 +175,20 @@ Follow the **Explain → Capture** pattern:
 **Example — architecture questions (batch):**
 
   AskUserQuestion with questions:
-    1. question: "Where should DamageCalculator live?"
+    1. question: "Where should AuthService live?"
        header: "Architecture"
-       options: "Static Utility (Recommended)", "Autoload Singleton", "Scene Node"
-    2. question: "How should damage be rounded?"
-       header: "Rounding"
-       options: "Floor to Int (Recommended)", "Round to Int", "Keep Decimal"
+       options: "Riverpod Provider (Recommended)", "GetIt Singleton", "Plain Class"
+    2. question: "Where should tokens be stored?"
+       header: "Storage"
+       options: "flutter_secure_storage (Recommended)", "SharedPreferences", "Hive"
 ```
+
+#### Example — capturing a feature decision (after full analysis in conversation):
+
+  AskUserQuestion with questions:
+    1. question: "Which state management approach for auth?"
+       header: "State"
+       options:
+         "Riverpod (Recommended)" — compile-safe, testable, modern
+         "BLoC" — strict separation, verbose
+         "Provider" — simple, widely used

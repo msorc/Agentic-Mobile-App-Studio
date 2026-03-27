@@ -2,7 +2,7 @@
 
 **Generated**: [DATE]
 **Stage**: [Concept | Systems Design | Technical Setup | Pre-Production | Production | Polish | Release]
-**Analysis Scope**: [Full project | Specific role: programmer/designer/producer]
+**Analysis Scope**: [Full project | Specific role: programmer/designer/project-manager]
 
 ---
 
@@ -21,23 +21,23 @@
 ### Design Documentation
 - **Status**: [X%] complete
 - **Files Found**: [N] documents in `design/`
-  - GDD sections: [N] files in `design/gdd/`
-  - Narrative docs: [N] files in `design/narrative/`
-  - Level designs: [N] files in `design/levels/`
+  - Feature specs: [N] files in `design/features/`
+  - PRD sections: [N] files in `design/prd/`
+  - User research: [N] files in `design/research/`
 - **Key Gaps**:
   - [ ] [Missing doc 1 + why it matters]
   - [ ] [Missing doc 2 + why it matters]
 
 ### Source Code
 - **Status**: [X%] complete
-- **Files Found**: [N] source files in `src/`
-- **Major Systems Identified**:
-  - ✅ [System 1] (`src/path/`) — [brief status]
-  - ✅ [System 2] (`src/path/`) — [brief status]
-  - ⚠️  [System 3] (`src/path/`) — [issue or incomplete]
+- **Files Found**: [N] source files in `lib/`
+- **Major Features Identified**:
+  - ✅ [Feature 1] (`lib/features/[name]/`) — [brief status]
+  - ✅ [Feature 2] (`lib/features/[name]/`) — [brief status]
+  - ⚠️  [Feature 3] (`lib/features/[name]/`) — [issue or incomplete]
 - **Key Gaps**:
-  - [ ] [Missing system 1 + impact]
-  - [ ] [Missing system 2 + impact]
+  - [ ] [Missing feature 1 + impact]
+  - [ ] [Missing feature 2 + impact]
 
 ### Architecture Documentation
 - **Status**: [X%] complete
@@ -61,10 +61,10 @@
 
 ### Testing
 - **Status**: [X%] coverage (estimated)
-- **Test Files**: [N] in `tests/`
-- **Coverage by System**:
-  - [System 1]: [X%] (estimated)
-  - [System 2]: [X%] (estimated)
+- **Test Files**: [N] in `test/`
+- **Coverage by Feature**:
+  - [Feature 1]: [X%] (estimated)
+  - [Feature 2]: [X%] (estimated)
 - **Key Gaps**:
   - [ ] [Missing test area + risk]
 
@@ -170,26 +170,28 @@ Based on gaps identified, consider running:
 
 ```
 design/
-  gdd/           [N] files
-  narrative/     [N] files
-  levels/        [N] files
+  features/      [N] files
+  prd/          [N] files
+  research/     [N] files
 
-src/
-  core/          [N] files
-  gameplay/      [N] files
-  ai/            [N] files
-  networking/    [N] files
-  ui/            [N] files
+lib/
+  core/         [N] files
+  features/     [N] files
+  shared/       [N] files
 
 docs/
-  architecture/  [N] ADRs
+  architecture/ [N] ADRs
 
 production/
-  sprints/       [N] plans
-  milestones/    [N] definitions
+  sprints/      [N] plans
+  milestones/   [N] definitions
 
-tests/           [N] test files
-prototypes/      [N] directories
+test/
+  widget/       [N] test files
+  integration/  [N] test files
+  unit/         [N] test files
+
+prototypes/     [N] directories
 ```
 
 ---

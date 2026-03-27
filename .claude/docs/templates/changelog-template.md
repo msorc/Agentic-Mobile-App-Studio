@@ -6,7 +6,7 @@
 
 ## New Features
 
-- **[Feature Name]**: [Player-friendly description of what they can now do. Focus on the experience, not the implementation. 1-2 sentences.]
+- **[Feature Name]**: [User-friendly description of what they can now do. Focus on the experience, not the implementation. 1-2 sentences.]
 
 - **[Feature Name]**: [Description]
 
@@ -14,15 +14,15 @@
 
 ## Improvements
 
-- **[Area Improved]**: [How this makes the game better for the player. Be specific.]
+- **[Area Improved]**: [How this makes the app better for the user. Be specific.]
 
 - **[Area Improved]**: [Description]
 
 ---
 
-## Balance Changes
+## Behavior Changes
 
-- **[What Changed]**: [Old value] -> [New value]. [Brief design reasoning in player terms. Example: "Healing potions now restore 50 HP (up from 30) -- late-game encounters needed more recovery options."]
+- **[What Changed]**: [Old behavior] -> [New behavior]. [Brief reasoning in user terms. Example: "The login screen now shows immediately (was: users saw a splash screen first) -- faster access to the app."]
 
 - **[What Changed]**: [Description]
 
@@ -30,15 +30,15 @@
 
 ## Bug Fixes
 
-- Fixed an issue where [describe the player-visible symptom, not the code fix]
-- Fixed [another player-visible symptom]
+- Fixed an issue where [describe the user-visible symptom, not the code fix]
+- Fixed [another user-visible symptom]
 - Fixed [symptom]
 
 ---
 
 ## Known Issues
 
-- [Issue description in player terms]. [Workaround if one exists.] We're working on a fix.
+- [Issue description in user terms]. [Workaround if one exists.] We're working on a fix.
 
 ---
 
@@ -49,7 +49,7 @@
 - Total commits: [N]
 
 ### Internal Changes
-- [Refactoring, infrastructure, or tooling changes not visible to players]
+- [Refactoring, infrastructure, or tooling changes not visible to users]
 
 ### Deferred Items
 - [Features or fixes originally planned for this release but moved to next]
@@ -58,5 +58,5 @@
 
 ---
 
-Thank you for playing! Your feedback helps us improve the game.
+Thank you for using [App Name]! Your feedback helps us improve.
 Report issues at [support link].

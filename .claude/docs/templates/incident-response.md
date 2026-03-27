@@ -11,13 +11,13 @@
 
 ## Impact Summary
 
-[2-3 sentences describing what players experienced. Write from the player
+[2-3 sentences describing what users experienced. Write from the user
 perspective, not the technical perspective.]
 
-- **Players affected**: [estimated count or percentage]
-- **Platforms affected**: [PC / Console / Mobile / All]
+- **Users affected**: [estimated count or percentage]
+- **Platforms affected**: [iOS / Android / Web / Desktop / All]
 - **Regions affected**: [All / specific regions]
-- **Revenue impact**: [estimated if applicable]
+- **Revenue/Conversion impact**: [estimated if applicable]
 
 ---
 
@@ -25,7 +25,7 @@ perspective, not the technical perspective.]
 
 | Time (UTC) | Event | Action Taken |
 | ---- | ---- | ---- |
-| [HH:MM] | Incident detected via [monitoring/player report/etc.] | Incident commander assigned |
+| [HH:MM] | Incident detected via [monitoring/user report/etc.] | Incident commander assigned |
 | [HH:MM] | Root cause identified | [Brief description of cause] |
 | [HH:MM] | Mitigation deployed | [What was done] |
 | [HH:MM] | Service restored / Fix confirmed | Monitoring for recurrence |
@@ -44,7 +44,7 @@ that led to the incident.]
 prevent this? This is more important than the technical cause.]
 
 ### Contributing Factors
-- [Factor 1 — e.g., "Insufficient load testing for the new matchmaking system"]
+- [Factor 1 — e.g., "Insufficient load testing for the new sync feature"]
 - [Factor 2 — e.g., "Monitoring alert threshold was set too high"]
 - [Factor 3]
 
@@ -64,7 +64,7 @@ prevent this? This is more important than the technical cause.]
 
 ---
 
-## Player Communication
+## User Communication
 
 ### Initial Acknowledgment
 *Sent: [Time] via [channel]*
@@ -79,8 +79,8 @@ prevent this? This is more important than the technical cause.]
 > [Text announcing the fix and any compensation]
 
 ### Compensation (if applicable)
-- **What**: [description of compensation — e.g., "500 premium currency + 24-hour XP boost"]
-- **Who**: [all players / affected players only / players who logged in during incident]
+- **What**: [description of compensation — e.g., "1 week premium subscription"]
+- **Who**: [all users / affected users only / users who were active during incident]
 - **When**: [delivery date and method]
 - **Rationale**: [why this compensation is appropriate for the impact]
 
@@ -124,10 +124,10 @@ prevent this? This is more important than the technical cause.]
 
 ## Sign-Offs
 
-- [ ] Technical Director — Root cause accurate, prevention plan sufficient
+- [ ] Technical Lead — Root cause accurate, prevention plan sufficient
 - [ ] QA Lead — Test coverage gaps addressed
-- [ ] Producer — Timeline and communication reviewed
-- [ ] Community Manager — Player communication reviewed
+- [ ] Project Manager — Timeline and communication reviewed
+- [ ] Release Manager — User communication reviewed
 
 ---
 

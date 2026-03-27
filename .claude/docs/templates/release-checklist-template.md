@@ -12,7 +12,7 @@
 - [ ] No compiler warnings (zero-warning policy)
 - [ ] Build version number set correctly: `[version]`
 - [ ] Build is reproducible from tagged commit: `[commit hash]`
-- [ ] Build size within budget: [actual] / [budget]
+- [ ] App size within budget: [actual] / [budget] MB
 - [ ] All assets included and loading correctly
 - [ ] No debug/development features enabled in release build
 
@@ -31,64 +31,92 @@
 ### Test Coverage
 - [ ] All critical path features tested and signed off
 - [ ] Full regression suite passed: [pass rate]%
-- [ ] Soak test passed (4+ hours continuous play)
+- [ ] Soak test passed (4+ hours continuous use)
 - [ ] Edge case testing complete
 
 ### Performance
-- [ ] Target FPS met on minimum spec: [actual] / [target] FPS
+- [ ] Target FPS met on minimum spec device: [actual] / [target] FPS
 - [ ] Memory usage within budget: [actual] / [budget] MB
-- [ ] Load times within budget: [actual] / [target] seconds
-- [ ] No memory leaks over extended play (soak test)
-- [ ] No frame drops below [threshold] in normal gameplay
+- [ ] App launch time within budget: [actual] / [target] seconds
+- [ ] No memory leaks over extended use (soak test)
+- [ ] No frame drops below [threshold] in normal usage
 
 ---
 
 ## Content Complete
 
 - [ ] All placeholder assets replaced with final versions
-- [ ] All player-facing text proofread
+- [ ] All user-facing text proofread
 - [ ] All text localization-ready (no hardcoded strings)
 - [ ] Localization complete for: [list locales]
-- [ ] Audio mix finalized and approved
-- [ ] Credits complete and accurate
+- [ ] In-app purchases tested and finalized
 - [ ] Legal notices and third-party attributions complete
 
 ---
 
-## Platform: PC
+## Platform: iOS
+
+- [ ] App Store Connect metadata complete
+- [ ] Screenshots meet App Store requirements (all sizes)
+- [ ] App preview videos (if applicable)
+- [ ] Age rating configured: [rating]
+- [ ] Privacy policy URL configured
+- [ ] TestFlight beta testing complete
+- [ ] Bundle ID correct: `[bundle.id]`
+- [ ] Capabilities configured: [list]
+- [ ] Push notification certificates valid
+- [ ] In-app purchase sandbox tested
+
+## Platform: Android
+
+- [ ] Play Console metadata complete
+- [ ] Screenshots meet Play Store requirements
+- [ ] Feature graphic and icon meet requirements
+- [ ] Age rating configured: [rating]
+- [ ] Privacy policy URL configured
+- [ ] Internal testing track complete
+- [ ] Package name correct: `[package.name]`
+- [ ] Signing keys secured
+- [ ] ProGuard/R8 rules configured
+- [ ] In-app billing sandbox tested
+
+## Platform: Web
+
+- [ ] Production build successful
+- [ ] CDN deployment verified
+- [ ] Service worker registered and working
+- [ ] Offline fallback tested
+- [ ] Responsive layout verified on all breakpoints
+- [ ] PWA manifest verified
+
+## Platform: Desktop
 
 - [ ] Minimum and recommended specs documented
-- [ ] Keyboard+mouse controls fully functional
-- [ ] Controller support tested (Xbox, PlayStation, generic)
-- [ ] Resolution scaling tested: 1080p, 1440p, 4K, ultrawide
-- [ ] Windowed, borderless, fullscreen modes working
-- [ ] Graphics settings save and load correctly
-- [ ] Store SDK integrated and tested: [Steam/Epic/GOG]
-- [ ] Achievements functional
-- [ ] Cloud saves functional
-
-## Platform: Console (if applicable)
-
-- [ ] TRC/TCR/Lotcheck requirements met
-- [ ] Platform controller prompts correct
-- [ ] Suspend/resume works
-- [ ] User switching handled
-- [ ] Network loss handled gracefully
-- [ ] Storage full scenario handled
-- [ ] Parental controls respected
-- [ ] Certification submission prepared
+- [ ] Installer created and tested: [Windows/macOS/Linux]
+- [ ] Auto-update mechanism tested
+- [ ] App data persistence verified
 
 ---
 
 ## Store and Distribution
 
-- [ ] Store page metadata complete and proofread
-- [ ] Screenshots current and meet platform requirements
-- [ ] Trailer current
-- [ ] Key art and capsule images final
-- [ ] Age ratings obtained: [ ] ESRB [ ] PEGI [ ] Other
-- [ ] Legal: EULA, Privacy Policy, Terms of Service
+### App Store (iOS)
+- [ ] App Store page metadata complete and proofread
+- [ ] Keywords optimized for discovery
+- [ ] Marketing contact configured
 - [ ] Pricing configured for all regions
+- [ ] Review notes submitted (if applicable)
+
+### Google Play (Android)
+- [ ] Play Store listing complete and proofread
+- [ ] Graphics meet Play Store requirements
+- [ ] Content rating questionnaire completed
+- [ ] Pricing configured for all regions
+- [ ] Testing tracks completed
+
+### Web/Desktop
+- [ ] Landing page ready
+- [ ] Download/install mechanism tested
 
 ---
 
@@ -98,10 +126,10 @@
 - [ ] Crash reporting configured: [service name]
 - [ ] Day-one patch prepared (if needed)
 - [ ] On-call team schedule set for first 72 hours
-- [ ] Community announcements drafted
-- [ ] Press/influencer keys prepared
+- [ ] User announcements drafted
 - [ ] Support team briefed on known issues
 - [ ] Rollback plan documented and tested
+- [ ] Customer support documentation updated
 
 ---
 
@@ -110,9 +138,9 @@
 | Role | Name | Status | Date |
 | ---- | ---- | ---- | ---- |
 | QA Lead | | [ ] Approved | |
-| Technical Director | | [ ] Approved | |
-| Producer | | [ ] Approved | |
-| Creative Director | | [ ] Approved | |
+| Technical Lead | | [ ] Approved | |
+| Project Manager | | [ ] Approved | |
+| Product Designer | | [ ] Approved | |
 
 ---
 

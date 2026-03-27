@@ -27,8 +27,8 @@
 
 **Design Intent** (clarified):
 - [Intent 1 — why this feature exists]
-- [Intent 2 — what player experience it creates]
-- [Intent 3 — how it fits into overall game pillars]
+- [Intent 2 — what user experience it creates]
+- [Intent 3 — how it fits into overall product pillars]
 
 ---
 
@@ -42,13 +42,13 @@
 - **Description**: [What it does]
 - **Implementation**: [How it works in code]
 - **Design Rationale**: [Why it exists — from user clarification]
-- **Player-Facing**: [How players experience this]
+- **User-Facing**: [How users experience this]
 
 **[Mechanic 2 Name]**:
 - **Description**: [What it does]
 - **Implementation**: [How it works]
 - **Design Rationale**: [Why it exists]
-- **Player-Facing**: [Player experience]
+- **User-Facing**: [User experience]
 
 ### 2.2 Rules and Formulas
 
@@ -75,7 +75,7 @@
 ```
 
 **Persistence**:
-- Saved: [What is saved to player save file]
+- Saved: [What is saved to user data]
 - Not saved: [What is session-only or recalculated]
 
 ### 2.4 Integration Points
@@ -140,7 +140,7 @@
 
 **Recommended Balance Pass**:
 - Run `/balance-check` on [specific aspect]
-- Playtest with focus on [specific scenario]
+- User test with focus on [specific scenario]
 
 ---
 

@@ -1,4 +1,4 @@
-# Release Notes: [Game Title] v[Version]
+# Release Notes: [App Name] v[Version]
 
 *Released: [Date]*
 
@@ -14,32 +14,32 @@
 ## What's New
 
 ### [Major Feature 1 Name]
-[2-4 sentences describing the feature. Focus on what players can DO, not
-how it works internally. Include a screenshot or GIF reference if applicable.]
+[2-4 sentences describing the feature. Focus on what users can DO, not
+how it works internally. Include a screenshot reference if applicable.]
 
 ### [Major Feature 2 Name]
 [Description]
 
 ---
 
-## Gameplay Changes
+## Feature Changes
 
-### Balance Adjustments
+### Balance Adjustments (if applicable)
 
 | Target | Change | Before | After | Context |
 | ---- | ---- | ---- | ---- | ---- |
-| [Weapon/Ability/Item] | [What changed] | [Old value] | [New value] | [Why — 1 sentence] |
+| [Feature/Setting/Parameter] | [What changed] | [Old value] | [New value] | [Why — 1 sentence] |
 | | | | | |
 
-### Mechanic Changes
-- **[Change Name]**: [What changed and how it affects gameplay. Be specific
-  about what players will experience differently.]
+### Behavior Changes
+- **[Change Name]**: [What changed and how it affects user experience. Be specific
+  about what users will experience differently.]
 
 ---
 
 ## Quality of Life
 
-- [Improvement 1 — describe the player benefit, not the technical change]
+- [Improvement 1 — describe the user benefit, not the technical change]
 - [Improvement 2]
 - [Improvement 3]
 
@@ -48,16 +48,16 @@ how it works internally. Include a screenshot or GIF reference if applicable.]
 ## Bug Fixes
 
 ### Critical Fixes
-- Fixed [describe what players experienced, e.g., "a crash when loading
-  saved games from version 1.0"]
+- Fixed [describe what users experienced, e.g., "a crash when opening
+  the profile screen in version 1.0"]
 
-### Gameplay Fixes
+### Feature Fixes
 - Fixed [describe the incorrect behavior and the correct behavior now]
 
 ### UI Fixes
 - Fixed [description]
 
-### Audio Fixes
+### Performance Fixes
 - Fixed [description]
 
 ### Platform-Specific Fixes
@@ -67,7 +67,7 @@ how it works internally. Include a screenshot or GIF reference if applicable.]
 
 ## Performance Improvements
 
-- [Improvement players will notice, e.g., "Reduced load times by approximately
+- [Improvement users will notice, e.g., "Reduced app launch time by approximately
   30% on all platforms"]
 - [Improvement]
 
@@ -84,7 +84,7 @@ We are aware of the following issues and are working on fixes for a future updat
 
 ## Coming Next
 
-[Optional — tease upcoming content to build anticipation. Keep it vague enough
+[Optional — tease upcoming features to build anticipation. Keep it vague enough
 to not create binding commitments.]
 
 > [1-2 sentences about what the team is working on next]
@@ -93,7 +93,7 @@ to not create binding commitments.]
 
 ## Thank You
 
-[Brief message thanking the community. Reference specific community feedback
+[Brief message thanking users. Reference specific user feedback
 that influenced changes in this release if applicable.]
 
 ---

@@ -27,7 +27,7 @@
 
 - **Build**: [Minimum build version]
 - **Platform**: [Target platforms]
-- **Preconditions**: [Required game state, save files, etc.]
+- **Preconditions**: [Required app state, user session, data conditions, etc.]
 
 ## Test Cases
 

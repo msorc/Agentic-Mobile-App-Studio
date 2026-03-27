@@ -11,7 +11,7 @@
 > **⚠️ Reverse-Documentation Notice**
 >
 > This concept document was created **after** the prototype was built. It captures
-> the core mechanic, learnings, and design insights discovered through prototyping.
+> the core feature, learnings, and design insights discovered through prototyping.
 > This is a formalization of experimental work, not a pre-planned design.
 
 ---
@@ -22,7 +22,7 @@
 [What question or idea was this prototype testing?]
 
 **Approach**:
-[How was the prototype built? Quick and dirty? Focused on one mechanic?]
+[How was the prototype built? Quick and dirty? Focused on one feature?]
 
 **Duration**:
 - Time spent: [X hours/days]
@@ -35,18 +35,18 @@
 
 ---
 
-## 2. Core Mechanic
+## 2. Core Feature
 
 **What the Prototype Does**:
-[Describe the mechanic or system that was prototyped]
+[Describe the feature or system that was prototyped]
 
 **How It Feels** (user feedback):
 - [Feeling 1 — e.g., "Satisfying", "Clunky", "Too complex"]
 - [Feeling 2 — e.g., "Intuitive", "Confusing", "Needs tutorial"]
-- [Feeling 3 — e.g., "Fun", "Boring", "Has potential"]
+- [Feeling 3 — e.g., "Engaging", "Boring", "Has potential"]
 
-**Player Fantasy**:
-[What fantasy or experience does this mechanic create?]
+**User Fantasy**:
+[What experience does this feature create?]
 
 **Core Loop** (if applicable):
 ```
@@ -54,14 +54,14 @@
 ```
 
 **Emergent Behaviors** (unintended but interesting):
-- [Behavior 1]: [What players did that wasn't planned]
-- [Behavior 2]: [Unexpected strategy or interaction]
+- [Behavior 1]: [What users did that wasn't planned]
+- [Behavior 2]: [Unexpected usage pattern or interaction]
 
 ---
 
 ## 3. What Worked
 
-### Mechanic Successes
+### Feature Successes
 
 ✅ **[Success 1]**: [What worked well]
 - **Why**: [What made this successful]
@@ -84,7 +84,7 @@
 
 ## 4. What Didn't Work
 
-### Mechanic Failures
+### Feature Failures
 
 ❌ **[Failure 1]**: [What didn't work]
 - **Why**: [Root cause]
@@ -122,11 +122,11 @@
 
 ### Design Insights
 
-💡 **[Insight 1]**: [What we learned about game design]
+💡 **[Insight 1]**: [What we learned about app design]
 - **Implication**: [How this affects future work]
 
 💡 **[Insight 2]**: [Design learning]
-- **Implication**: [Impact on GDD or other systems]
+- **Implication**: [How this affects the feature spec or other features]
 
 ### Technical Insights
 
@@ -136,9 +136,9 @@
 💡 **[Insight 4]**: [Technical learning]
 - **Implication**: [Future technical decisions]
 
-### Player Psychology Insights
+### User Psychology Insights
 
-💡 **[Insight 5]**: [What we learned about player behavior]
+💡 **[Insight 5]**: [What we learned about user behavior]
 - **Implication**: [How this affects design philosophy]
 
 ---
@@ -151,14 +151,14 @@
 - [ ] [Requirement 1 — e.g., "Rewrite for performance"]
 - [ ] [Requirement 2 — e.g., "Add proper UI"]
 - [ ] [Requirement 3 — e.g., "Design 10 more variations"]
-- [ ] [Requirement 4 — e.g., "Integrate with progression system"]
+- [ ] [Requirement 4 — e.g., "Integrate with user profile system"]
 
 **Estimated Production Effort**: [Small | Medium | Large]
 - Prototype reusability: [X%] of code can be kept
 - From-scratch effort: [X hours/days to production-ready]
 
 **If No — Why Not?**:
-- [Reason 1 — e.g., "Fun but doesn't fit game pillars"]
+- [Reason 1 — e.g., "Engaging but doesn't fit app pillars"]
 - [Reason 2 — e.g., "Too complex for target audience"]
 - [Reason 3 — e.g., "Technically infeasible at scale"]
 
@@ -168,9 +168,9 @@
 
 ---
 
-## 8. Design Pillars Alignment
+## 8. Product Pillars Alignment
 
-**How This Relates to Game Pillars** (if game pillars are defined):
+**How This Relates to App Pillars** (if product pillars are defined):
 
 | Pillar | Alignment | Notes |
 |--------|-----------|-------|
@@ -178,33 +178,33 @@
 | [Pillar 2] | ✅ Strong / ⚠️ Weak / ❌ Conflicts | [Explanation] |
 | [Pillar 3] | ✅ Strong / ⚠️ Weak / ❌ Conflicts | [Explanation] |
 
-**Overall Pillar Fit**: [Does this belong in the game?]
+**Overall Pillar Fit**: [Does this belong in the app?]
 
 ---
 
 ## 9. Next Steps
 
 ### Immediate (If Moving Forward)
-1. **[Task 1]**: [e.g., "Create full design doc for this system"]
+1. **[Task 1]**: [e.g., "Create full feature spec for this system"]
 2. **[Task 2]**: [e.g., "Write ADR for technical approach"]
 3. **[Task 3]**: [e.g., "Add to backlog for Sprint X"]
 
 ### Before Production (If Needs More Work)
 1. **[Task 1]**: [e.g., "Build second prototype testing X variation"]
-2. **[Task 2]**: [e.g., "Playtest with 5+ people"]
+2. **[Task 2]**: [e.g., "User test with 5+ people"]
 3. **[Task 3]**: [e.g., "Investigate technical feasibility of Y"]
 
 ### If Abandoning
 1. **[Task 1]**: [e.g., "Archive prototype with this document"]
 2. **[Task 2]**: [e.g., "Extract reusable code/learnings"]
-3. **[Task 3]**: [e.g., "Update game pillars if this changed thinking"]
+3. **[Task 3]**: [e.g., "Update product pillars if this changed thinking"]
 
 ---
 
 ## 10. Technical Notes
 
 **Prototype Implementation**:
-- Language/Engine: [What was used]
+- Framework: [Flutter / React Native / etc.]
 - Architecture: [How it was structured]
 - Shortcuts taken: [What was hacky or throwaway]
 
@@ -218,11 +218,11 @@
 
 ---
 
-## 11. Playtest Feedback
+## 11. User Testing Feedback
 
-*(If prototype was playtested)*
+*(If prototype was user tested)*
 
-**Testers**: [N people, [internal/external]]
+**Testers**: [N people, internal/external]
 
 **Positive Feedback**:
 - "[Quote 1]" — [Tester name/role]
@@ -244,17 +244,17 @@
 
 ## 12. Related Work
 
-**Inspired By** (games/mechanics this was influenced by):
-- [Game 1]: [What mechanic or feeling]
-- [Game 2]: [What was borrowed or adapted]
+**Inspired By** (apps/features this was influenced by):
+- [App 1]: [What feature or feeling]
+- [App 2]: [What was borrowed or adapted]
 
 **Differs From** (how this is unique or different):
 - [Difference 1]
 - [Difference 2]
 
-**Integrates With** (existing game systems):
-- [System 1]: [How they would connect]
-- [System 2]: [How they would connect]
+**Integrates With** (existing app features):
+- [Feature 1]: [How they would connect]
+- [Feature 2]: [How they would connect]
 
 ---
 
@@ -262,7 +262,7 @@
 
 **Design Questions**:
 1. **[Question 1]**: [What's still undecided about the design?]
-2. **[Question 2]**: [What needs playtesting or iteration?]
+2. **[Question 2]**: [What needs user testing or iteration?]
 
 **Technical Questions**:
 3. **[Question 3]**: [What technical unknowns remain?]
@@ -273,10 +273,10 @@
 ## 14. Appendix: Prototype Assets
 
 **Code**:
-- Location: `prototypes/[name]/src/`
+- Location: `prototypes/[name]/lib/`
 - Status: [Archival | Partial reuse | Full reuse]
 
-**Art/Audio** (if any):
+**Assets** (if any):
 - Location: `prototypes/[name]/assets/`
 - Status: [Placeholder | Production-ready | Needs replacement]
 
@@ -291,7 +291,7 @@
 | Date | Author | Changes |
 |------|--------|---------|
 | [Date] | Claude (reverse-doc) | Initial concept doc from prototype analysis |
-| [Date] | [User] | Clarified outcomes, added playtest feedback |
+| [Date] | [User] | Clarified outcomes, added user feedback |
 
 ---
 
