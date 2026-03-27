@@ -3,7 +3,7 @@
   <p align="center">
     Turn a single Claude Code session into a full cross-platform mobile app development studio.
     <br />
-    24 agents. 28 workflows. One coordinated AI team.
+    24 agents. 35 skills. One coordinated AI team.
   </p>
 </p>
 
@@ -160,9 +160,9 @@ CLAUDE.md                           # Master configuration
 .claude/
   settings.json                     # Hooks, permissions, safety rules
   agents/                           # 24 agent definitions (markdown + YAML frontmatter)
-  skills/                           # 28 slash commands (subdirectory per skill)
+  skills/                           # 35 slash commands (subdirectory per skill)
   hooks/                            # 8 hook scripts (bash, cross-platform)
-  rules/                            # 3 path-scoped coding standards
+  rules/                            # 8 path-scoped coding standards
   docs/
     agent-roster.md                 # Full agent table with domains
     agent-coordination-map.md       # Delegation and escalation paths
