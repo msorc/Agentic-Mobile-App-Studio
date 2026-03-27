@@ -34,58 +34,14 @@ tmp/
 *.dylib
 *.app
 
-# === Engine: Godot ===
-.godot/
-*.translation
-export_presets.cfg
-# Uncomment if using Godot:
-# *.import
-
-# === Engine: Unity ===
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
-crashlytics-buildid.txt
-sysinfo.txt
-# Uncomment if using Unity:
-# [Aa]ssets/[Aa]sset[Ss]tore[Tt]ools/
-
-# === Engine: Unreal ===
-Binaries/
-DerivedDataCache/
-Intermediate/
-Saved/
-*.VC.opendb
-*.opensdf
-*.sdf
-*.cachefile
-*.VC.db
-# Uncomment if using Unreal:
-# *.uasset
-# *.umap
-
-# === Compiled Shaders ===
-*.spv
-*.cso
-*.dxbc
+# === Flutter/Dart ===
+.dart_tool/
+.packages
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+.fvm/
+.idea/
 
 # === Temporary and Cache ===
 *.tmp
@@ -120,12 +76,6 @@ secrets.json
 # *.wav
 # *.mp3
 # *.ogg
-# *.fbx
-# *.blend
-# *.psd
-# *.tga
-# *.exr
-# *.hdr
 
 # === OS Generated ===
 ehthumbs.db
