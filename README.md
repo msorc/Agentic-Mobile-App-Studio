@@ -15,9 +15,9 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-24-blueviolet" alt="24 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-28-green" alt="28 Skills"></a>
+    <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-35-green" alt="35 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8-orange" alt="8 Hooks"></a>
-  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-3-red" alt="3 Rules"></a>
+  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-8-red" alt="8 Rules"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built%20for-Claude%20Code-f5f5f5?logo=anthropic" alt="Built for Claude Code"></a>
 </p>
 
@@ -55,10 +55,10 @@ The result: you still make every decision, but now you have a team that asks the
 | Category | Count | Description |
 |----------|-------|-------------|
 | **Agents** | 24 | Specialized subagents across Flutter, iOS, Android, Web, Desktop, design, QA, and production |
-| **Skills** | 28 | Slash commands for common workflows (`/start`, `/sprint-plan`, `/code-review`, `/feature-brainstorm`, etc.) |
+| **Skills** | 35 | Slash commands for common workflows (`/start`, `/sprint-plan`, `/code-review`, `/feature-brainstorm`, etc.) |
 | **Hooks** | 8 | Automated validation on commits, pushes, file changes, session lifecycle, agent audit, and gap detection |
-| **Rules** | 3 | Path-scoped coding standards for Flutter/Dart, UI code, and network code |
-| **Templates** | 5 | Document templates for PRDs, feature specs, architecture docs, sprint plans, and milestones |
+| **Rules** | 8 | Path-scoped coding standards for Flutter/Dart, UI code, and network code |
+| **Templates** | 21 | Document templates for PRDs, feature specs, architecture docs, sprint plans, and milestones |
 
 ## Studio Hierarchy
 
@@ -95,7 +95,7 @@ The template includes platform-specific agents for all five target platforms:
 
 ## Slash Commands
 
-Type `/` in Claude Code to access all 28 skills:
+Type `/` in Claude Code to access all 35 skills:
 
 **Reviews & Analysis**
 `/design-review` `/code-review` `/asset-audit` `/scope-check` `/perf-profile` `/tech-debt`
@@ -110,7 +110,7 @@ Type `/` in Claude Code to access all 28 skills:
 `/release-checklist` `/launch-checklist` `/changelog` `/patch-notes` `/hotfix`
 
 **Creative**
-`/prototype` `/onboard` `/localize`
+`/app-prototype` `/onboard` `/localize`
 
 **Team Orchestration** (coordinate multiple agents on a single feature)
 `/team-ui` `/team-release` `/team-polish`
@@ -169,7 +169,7 @@ CLAUDE.md                           # Master configuration
     directory-structure.md          # Flutter Clean Architecture structure
     technical-preferences.md        # Platform naming conventions and budgets
     templates/                      # 5 document templates
-src/                                # App source code (Flutter/Dart)
+lib/                                # App source code (Flutter/Dart)
 lib/
   core/                             # Shared utilities, constants, extensions
   features/                         # Feature modules (Clean Architecture)
