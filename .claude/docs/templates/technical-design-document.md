@@ -4,9 +4,9 @@
 - **Version**: 1.0
 - **Last Updated**: [Date]
 - **Author**: [Agent/Person]
-- **Reviewer**: lead-programmer
+- **Reviewer**: technical-lead
 - **Related ADR**: [ADR-XXXX if applicable]
-- **Related Design Doc**: [Link to game design doc this implements]
+- **Related Design Doc**: [Link to feature spec or PRD this implements]
 
 ## Overview
 [2-3 sentence summary of what this system does and why it exists]

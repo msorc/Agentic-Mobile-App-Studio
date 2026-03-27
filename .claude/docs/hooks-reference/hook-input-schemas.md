@@ -12,9 +12,9 @@ Fired before a tool is executed. Can **allow** (exit 0) or **block** (exit 2).
 {
   "tool_name": "Bash",
   "tool_input": {
-    "command": "git commit -m 'feat: add player health system'",
-    "description": "Commit changes with message",
-    "timeout": 120000
+    "command": "flutter build apk --debug",
+    "description": "Build debug APK",
+    "timeout": 300000
   }
 }
 ```
@@ -25,8 +25,8 @@ Fired before a tool is executed. Can **allow** (exit 0) or **block** (exit 2).
 {
   "tool_name": "Write",
   "tool_input": {
-    "file_path": "src/gameplay/health.gd",
-    "content": "extends Node\n..."
+    "file_path": "lib/features/auth/data/auth_service.dart",
+    "content": "class AuthService { ... }"
   }
 }
 ```
@@ -37,9 +37,9 @@ Fired before a tool is executed. Can **allow** (exit 0) or **block** (exit 2).
 {
   "tool_name": "Edit",
   "tool_input": {
-    "file_path": "src/gameplay/health.gd",
-    "old_string": "var health = 100",
-    "new_string": "var health: int = 100"
+    "file_path": "lib/features/auth/data/auth_service.dart",
+    "old_string": "int timeout = 30",
+    "new_string": "int timeout = 60"
   }
 }
 ```
@@ -50,7 +50,7 @@ Fired before a tool is executed. Can **allow** (exit 0) or **block** (exit 2).
 {
   "tool_name": "Read",
   "tool_input": {
-    "file_path": "src/gameplay/health.gd"
+    "file_path": "lib/features/auth/data/auth_service.dart"
   }
 }
 ```
@@ -65,8 +65,8 @@ Fired after a tool completes. **Cannot block** (exit code ignored for blocking).
 {
   "tool_name": "Write",
   "tool_input": {
-    "file_path": "assets/data/enemy_stats.json",
-    "content": "{\"goblin\": {\"health\": 50}}"
+    "file_path": "assets/data/app_config.json",
+    "content": "{\"api_timeout\": 30}"
   },
   "tool_output": "File written successfully"
 }
@@ -78,9 +78,9 @@ Fired after a tool completes. **Cannot block** (exit code ignored for blocking).
 {
   "tool_name": "Edit",
   "tool_input": {
-    "file_path": "assets/data/enemy_stats.json",
-    "old_string": "\"health\": 50",
-    "new_string": "\"health\": 75"
+    "file_path": "assets/data/app_config.json",
+    "old_string": "\"api_timeout\": 30",
+    "new_string": "\"api_timeout\": 60"
   },
   "tool_output": "File edited successfully"
 }
@@ -92,9 +92,9 @@ Fired when a subagent is spawned via the Task tool.
 
 ```json
 {
-  "agent_name": "game-designer",
+  "agent_name": "product-designer",
   "model": "sonnet",
-  "description": "Design the combat healing mechanic"
+  "description": "Design the user authentication flow"
 }
 ```
 
