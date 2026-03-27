@@ -4,7 +4,7 @@
 #
 # Input schema (SessionStart): No stdin input
 
-echo "=== Claude Code Game Studios — Session Context ==="
+echo "=== Agentic Mobile App Studio — Session Context ==="
 
 # Current branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -34,7 +34,7 @@ fi
 
 # Open bug count
 BUG_COUNT=0
-for dir in tests/playtest production; do
+for dir in test production; do
     if [ -d "$dir" ]; then
         count=$(find "$dir" -name "BUG-*.md" 2>/dev/null | wc -l)
         BUG_COUNT=$((BUG_COUNT + count))
@@ -44,14 +44,20 @@ if [ "$BUG_COUNT" -gt 0 ]; then
     echo "Open bugs: $BUG_COUNT"
 fi
 
-# Code health quick check
-if [ -d "src" ]; then
-    TODO_COUNT=$(grep -r "TODO" src/ 2>/dev/null | wc -l)
-    FIXME_COUNT=$(grep -r "FIXME" src/ 2>/dev/null | wc -l)
+# Code health quick check (Flutter/Dart code)
+if [ -d "lib" ]; then
+    TODO_COUNT=$(grep -r "TODO" lib/ 2>/dev/null | wc -l)
+    FIXME_COUNT=$(grep -r "FIXME" lib/ 2>/dev/null | wc -l)
     if [ "$TODO_COUNT" -gt 0 ] || [ "$FIXME_COUNT" -gt 0 ]; then
         echo ""
-        echo "Code health: ${TODO_COUNT} TODOs, ${FIXME_COUNT} FIXMEs in src/"
+        echo "Code health: ${TODO_COUNT} TODOs, ${FIXME_COUNT} FIXMEs in lib/"
     fi
+fi
+
+# Flutter analysis check
+if [ -f "pubspec.yaml" ]; then
+    echo ""
+    echo "Dependencies: $(grep -c "  [a-z]" pubspec.yaml 2>/dev/null || echo "0") packages"
 fi
 
 # --- Active session state recovery ---

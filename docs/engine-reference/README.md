@@ -1,57 +1,58 @@
 # Engine Reference Documentation
 
 This directory contains curated, version-pinned documentation snapshots for the
-game engine(s) used in this project. These files exist because **LLM knowledge
-has a cutoff date** and game engines update frequently.
+Flutter SDK and its ecosystem. These files exist because **LLM knowledge
+has a cutoff date** and Flutter/Dart update frequently with new features,
+breaking changes, and deprecated patterns.
 
 ## Why This Exists
 
-Claude's training data has a knowledge cutoff (currently May 2025). Game engines
-like Godot, Unity, and Unreal ship updates that introduce breaking API changes,
-new features, and deprecated patterns. Without these reference files, agents will
-suggest outdated code.
+Claude's training data has a knowledge cutoff. Flutter SDK releases updates that
+introduce breaking API changes, new widget types, and updated best practices.
+Without these reference files, agents may suggest outdated code patterns.
 
 ## Structure
 
-Each engine gets its own directory:
-
 ```
-<engine>/
-├── VERSION.md              # Pinned version, verification date, knowledge gap window
-├── breaking-changes.md     # API changes between versions, organized by risk level
-├── deprecated-apis.md      # "Don't use X → Use Y" lookup tables
-├── current-best-practices.md  # New practices not in model training data
-└── modules/                # Per-subsystem quick references (~150 lines max each)
-    ├── rendering.md
-    ├── physics.md
-    └── ...
+flutter/
+├── VERSION.md                  # Pinned version, verification date, knowledge gap window
+├── breaking-changes.md         # API changes between Flutter versions
+├── deprecated-apis.md          # "Don't use X → Use Y" lookup tables
+├── current-best-practices.md   # New practices not in model training data
+├── packages.md                 # Popular packages ecosystem reference
+└── platform-specific/          # Platform-specific considerations
+    ├── ios.md
+    ├── android.md
+    ├── web.md
+    └── desktop.md
 ```
 
 ## How Agents Use These Files
 
-Engine-specialist agents are instructed to:
+Flutter specialist agents are instructed to:
 
-1. Read `VERSION.md` to confirm the current engine version
-2. Check `deprecated-apis.md` before suggesting any engine API
+1. Read `VERSION.md` to confirm the current Flutter version
+2. Check `deprecated-apis.md` before suggesting any Flutter/Dart API
 3. Consult `breaking-changes.md` for version-specific concerns
-4. Read relevant `modules/*.md` for subsystem-specific work
+4. Read relevant `platform-specific/*.md` for platform-specific work
+5. Reference `packages.md` for ecosystem package guidance
 
 ## Maintenance
 
 ### When to Update
 
-- After upgrading the engine version
+- After upgrading the Flutter SDK version
 - When the LLM model is updated (new knowledge cutoff)
-- After running `/refresh-docs` (if available)
-- When you discover an API the model gets wrong
+- After discovering an API the model gets wrong
+- When adding new platform-specific documentation
 
 ### How to Update
 
-1. Update `VERSION.md` with the new engine version and date
+1. Update `VERSION.md` with the new Flutter version and date
 2. Add new entries to `breaking-changes.md` for the version transition
 3. Move newly deprecated APIs into `deprecated-apis.md`
 4. Update `current-best-practices.md` with new patterns
-5. Update relevant `modules/*.md` with API changes
+5. Update relevant `platform-specific/*.md` with platform changes
 6. Set "Last verified" dates on all modified files
 
 ### Quality Rules
