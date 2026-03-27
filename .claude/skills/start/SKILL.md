@@ -8,8 +8,8 @@ allowed-tools: Read, Glob, Grep, AskUserQuestion
 
 # Guided Onboarding
 
-This skill is the entry point for new users. It does NOT assume you have a game
-idea, an engine preference, or any prior experience. It asks first, then routes
+This skill is the entry point for new users. It does NOT assume you have an app
+idea, a framework preference, or any prior experience. It asks first, then routes
 you to the right workflow.
 
 ---
@@ -23,13 +23,12 @@ Do NOT show these results unprompted — they inform your recommendations, not
 the conversation opener.
 
 Check:
-- **Engine configured?** Read `.claude/docs/technical-preferences.md`. If the
-  Engine field contains `[TO BE CONFIGURED]`, the engine is not set.
-- **Game concept exists?** Check for `design/gdd/game-concept.md`.
-- **Source code exists?** Glob for source files in `src/` (`*.gd`, `*.cs`,
-  `*.cpp`, `*.h`, `*.rs`, `*.py`, `*.js`, `*.ts`).
-- **Prototypes exist?** Check for subdirectories in `prototypes/`.
-- **Design docs exist?** Count markdown files in `design/gdd/`.
+- **Flutter configured?** Read `.claude/docs/technical-preferences.md`. If the
+  Framework field contains `[TO BE CONFIGURED]`, Flutter is not set.
+- **App concept exists?** Check for `design/prd/` or `design/feature specs/`.
+- **Source code exists?** Glob for Dart files in `lib/` (`*.dart`).
+- **Prototypes exist?** Check for directories in `prototypes/` or feature modules.
+- **Design docs exist?** Count markdown files in `design/`.
 - **Production artifacts?** Check for files in `production/sprints/` or
   `production/milestones/`.
 
@@ -42,18 +41,18 @@ self-assessment and to tailor follow-up recommendations.
 
 This is the first thing the user sees. Present these 4 options clearly:
 
-> **Welcome to Claude Code Game Studios!**
+> **Welcome to Agentic Mobile App Studio!**
 >
 > Before I suggest anything, I'd like to understand where you're starting from.
-> Where are you at with your game idea right now?
+> Where are you at with your app idea right now?
 >
-> **A) No idea yet** — I don't have a game concept at all. I want to explore
+> **A) No idea yet** — I don't have an app concept at all. I want to explore
 > and figure out what to make.
 >
-> **B) Vague idea** — I have a rough theme, feeling, or genre in mind
-> (e.g., "something with space" or "a cozy farming game") but nothing concrete.
+> **B) Vague idea** — I have a rough app type, feeling, or category in mind
+> (e.g., "something for fitness" or "a productivity app") but nothing concrete.
 >
-> **C) Clear concept** — I know the core idea — genre, basic mechanics, maybe
+> **C) Clear concept** — I know the core idea — app type, basic features, maybe
 > a pitch sentence — but haven't formalized it into documents yet.
 >
 > **D) Existing work** — I already have design docs, prototypes, code, or
@@ -67,19 +66,17 @@ Wait for the user's answer. Do not proceed until they respond.
 
 #### If A: No idea yet
 
-The user needs creative exploration before anything else. Engine choice,
+The user needs creative exploration before anything else. Platform choice,
 technical setup — all of that comes later.
 
 1. Acknowledge that starting from zero is completely fine
-2. Briefly explain what `/brainstorm` does (guided ideation using professional
-   frameworks — MDA, player psychology, verb-first design)
-3. Recommend running `/brainstorm open` as the next step
+2. Briefly explain what `/feature-brainstorm` does (guided ideation using
+   professional frameworks — user research, use case analysis, platform patterns)
+3. Recommend running `/feature-brainstorm open` as the next step
 4. Show the recommended path:
-   - `/brainstorm` — discover your game concept
-   - `/setup-engine` — configure the engine (brainstorm will recommend one)
-   - `/map-systems` — decompose the concept into systems and plan GDD writing order
-   - `/prototype` — test the core mechanic
+   - `/feature-brainstorm` — discover your app concept
    - `/sprint-plan` — plan the first sprint
+   - Build initial feature modules
 
 #### If B: Vague idea
 
@@ -87,32 +84,29 @@ The user has a seed but needs help growing it into a concept.
 
 1. Ask them to share their vague idea — even a few words is enough
 2. Validate the idea as a starting point (don't judge or redirect)
-3. Recommend running `/brainstorm [their hint]` to develop it
+3. Recommend running `/feature-brainstorm [their hint]` to develop it
 4. Show the recommended path:
-   - `/brainstorm [hint]` — develop the idea into a full concept
-   - `/setup-engine` — configure the engine
-   - `/map-systems` — decompose the concept into systems and plan GDD writing order
-   - `/prototype` — test the core mechanic
+   - `/feature-brainstorm [hint]` — develop the idea into a full concept
    - `/sprint-plan` — plan the first sprint
+   - Build initial feature modules
 
 #### If C: Clear concept
 
 The user knows what they want to make but hasn't documented it.
 
 1. Ask 2-3 follow-up questions to understand their concept:
-   - What's the genre and core mechanic? (one sentence)
-   - Do they have an engine preference, or need help choosing?
-   - What's the rough scope? (jam game, small project, large project)
+   - What's the app type and core functionality? (one sentence)
+   - Do they have target platforms in mind? (iOS, Android, Web, Desktop)
+   - What's the rough scope? (MVP, small project, large project)
 2. Based on their answers, offer two paths:
-   - **Formalize first**: Run `/brainstorm` to structure the concept into a
-     proper game concept document with pillars, MDA analysis, and scope tiers
-   - **Jump to engine setup**: If they're confident in their concept, go
-     straight to `/setup-engine` and write the GDD manually afterward
+   - **Formalize first**: Run `/feature-brainstorm` to structure the concept into
+     a proper product requirements document with use cases, platform targets,
+     and scope tiers
+   - **Jump to planning**: If they're confident in their concept, go straight
+     to `/sprint-plan` and write the PRD manually afterward
 3. Show the recommended path (adapted to their choice):
-   - `/brainstorm` or `/setup-engine` (their pick)
+   - `/feature-brainstorm` or `/sprint-plan` (their pick)
    - `/design-review` — validate the concept doc
-   - `/map-systems` — decompose the concept into individual systems with dependencies and priorities
-   - `/design-system` — author per-system GDDs (guided, section-by-section)
    - `/architecture-decision` — make first technical decisions
    - `/sprint-plan` — plan the first sprint
 
@@ -121,14 +115,12 @@ The user knows what they want to make but hasn't documented it.
 The user has artifacts already. Figure out what exists and what's missing.
 
 1. Share what you found in Step 1 (now it's relevant):
-   - "I can see you have [X source files / Y design docs / Z prototypes]..."
-   - "Your engine is [configured as X / not yet configured]..."
+   - "I can see you have [X Dart files / Y design docs / Z prototypes]..."
+   - "Your Flutter configuration is [configured as X / not yet configured]..."
 2. Recommend running `/project-stage-detect` for a full analysis
-3. If the engine isn't configured, note that `/setup-engine` should come first
-4. Show the recommended path:
+3. Show the recommended path:
    - `/project-stage-detect` — full gap analysis
-   - `/setup-engine` — if not configured
-   - `/design-system` — if systems index exists but GDDs are incomplete
+   - `/design-review` — if design docs need validation
    - `/gate-check` — validate readiness for next phase
    - `/sprint-plan` — organize the work
 
@@ -158,12 +150,12 @@ once the user has a clear next action.
   project is a fresh template with no artifacts yet. Would Path A or B be a
   better fit?"
 - **User picks A but project has code**: Mention what you found — "I noticed
-  there's already code in `src/`. Did you mean to pick D (existing work)? Or
+  there's already code in `lib/`. Did you mean to pick D (existing work)? Or
   would you like to start fresh with a new concept?"
-- **User is returning (engine configured, concept exists)**: Skip onboarding
-  entirely — "It looks like you're already set up! Your engine is [X] and you
-  have a game concept at `design/gdd/game-concept.md`. Want to pick up where
-  you left off? Try `/sprint-plan` or just tell me what you'd like to work on."
+- **User is returning (Flutter configured, concept exists)**: Skip onboarding
+  entirely — "It looks like you're already set up! Your Flutter version is [X]
+  and you have a feature index at `design/feature-index.md`. Want to pick up
+  where you left off? Try `/sprint-plan` or just tell me what you'd like to work on."
 - **User doesn't fit any option**: Let them describe their situation in their
   own words and adapt. The 4 options are starting points, not a prison.
 

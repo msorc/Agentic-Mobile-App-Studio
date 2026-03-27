@@ -1,6 +1,6 @@
 ---
 name: asset-audit
-description: "Audits game assets for compliance with naming conventions, file size budgets, format standards, and pipeline requirements. Identifies orphaned assets, missing references, and standard violations."
+description: "Audits app assets for compliance with naming conventions, file size budgets, format standards, and pipeline requirements. Identifies orphaned assets, missing references, and standard violations."
 argument-hint: "[category|all]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep
@@ -8,26 +8,22 @@ allowed-tools: Read, Glob, Grep
 
 When this skill is invoked:
 
-1. **Read the art bible or asset standards** from the relevant design docs and
-   the CLAUDE.md naming conventions.
+1. **Read the asset standards** from CLAUDE.md naming conventions.
 
 2. **Scan the target asset directory** using Glob:
-   - `assets/art/**/*` for art assets
-   - `assets/audio/**/*` for audio assets
-   - `assets/vfx/**/*` for VFX assets
-   - `assets/shaders/**/*` for shaders
+   - `assets/images/**/*` for image assets
+   - `assets/icons/**/*` for icons
+   - `assets/fonts/**/*` for fonts
    - `assets/data/**/*` for data files
 
 3. **Check naming conventions**:
-   - Art: `[category]_[name]_[variant]_[size].[ext]`
-   - Audio: `[category]_[context]_[name]_[variant].[ext]`
+   - Images: `[category]_[name]_[variant]_[size].[ext]`
+   - Icons: `[category]_[name]_[size].[ext]`
    - All files must be lowercase with underscores
 
 4. **Check file standards**:
-   - Textures: Power-of-two dimensions, correct format (PNG for UI, compressed
-     for 3D), within size budget
-   - Audio: Correct sample rate, format (OGG for SFX, OGG/MP3 for music),
-     within duration limits
+   - Images: Correct format (PNG for UI, compressed for photos), within size budget
+   - Icons: SVG preferred, or PNG at correct densities
    - Data: Valid JSON/YAML, schema-compliant
 
 5. **Check for orphaned assets** by searching code for references to each

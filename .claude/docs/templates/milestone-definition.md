@@ -3,7 +3,7 @@
 ## Overview
 
 - **Target Date**: [Date]
-- **Type**: [Prototype | Vertical Slice | Alpha | Beta | Gold | Post-Launch]
+- **Type**: [MVP | Beta | Release Candidate | GA | Post-Launch]
 - **Duration**: [N weeks]
 - **Number of Sprints**: [N]
 
@@ -20,37 +20,40 @@ these are met.]
 - [ ] [Criterion 1 -- specific and testable]
 - [ ] [Criterion 2]
 - [ ] [Criterion 3]
-- [ ] All S1 and S2 bugs resolved
-- [ ] Performance within budget on target hardware
+- [ ] All P0 bugs resolved
+- [ ] All P1 bugs resolved or deferred to next milestone
+- [ ] Performance within budget on target devices
 - [ ] Build stable for [X] consecutive days
+- [ ] App Store / Play Store submission ready (if applicable)
 
 ## Feature List
 
 ### Must Ship (Milestone Fails Without These)
 
-| Feature | Design Doc | Owner | Sprint Target | Status |
-|---------|-----------|-------|--------------|--------|
+| Feature | Spec Doc | Owner | Sprint Target | Status |
+|---------|----------|-------|--------------|--------|
 
 ### Should Ship (Planned but Cuttable)
 
-| Feature | Design Doc | Owner | Sprint Target | Cut Impact | Status |
-|---------|-----------|-------|--------------|-----------|--------|
+| Feature | Spec Doc | Owner | Sprint Target | Cut Impact | Status |
+|---------|----------|-------|--------------|-----------|--------|
 
 ### Stretch Goals (Only if Ahead of Schedule)
 
-| Feature | Design Doc | Owner | Value Add |
-|---------|-----------|-------|----------|
+| Feature | Spec Doc | Owner | Value Add |
+|---------|----------|-------|----------|
 
 ## Quality Gates
 
 | Gate | Threshold | Measurement Method |
 |------|-----------|-------------------|
-| Crash rate | < [X] per hour | Automated crash reporting |
-| Frame rate | > [X] FPS on min spec | Performance profiling |
-| Load time | < [X] seconds | Automated timing |
-| Critical bugs | 0 open S1 | Bug tracker |
-| Major bugs | < [X] open S2 | Bug tracker |
+| Crash rate | < [X] per hour | Crash reporting |
+| Memory | < [X] MB on target devices | Profiling |
+| Startup time | < [X] seconds | Automated timing |
+| Critical bugs | 0 open P0 | Bug tracker |
+| Major bugs | < [X] open P1 | Bug tracker |
 | Test coverage | > [X]% | Test framework report |
+| Flutter analyze | 0 errors | `flutter analyze` |
 
 ## Risk Register
 
@@ -73,7 +76,7 @@ these are met.]
 
 | Date | Review Type | Attendees |
 |------|-----------|-----------|
-| [Week 2] | Early progress check | Producer, Directors |
+| [Week 2] | Early progress check | Project Manager, Leads |
 | [Midpoint] | Mid-milestone review | Full team |
 | [Week N-1] | Pre-milestone review | Full team |
 | [Target Date] | Milestone review | Full team |

@@ -1,6 +1,6 @@
 ---
 name: changelog
-description: "Auto-generates a changelog from git commits, sprint data, and design documents. Produces both internal and player-facing versions."
+description: "Auto-generates a changelog from git commits, sprint data, and design documents. Produces both internal and user-facing versions."
 argument-hint: "[version|sprint-number]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Bash
@@ -29,15 +29,15 @@ When this skill is invoked:
 3. **Read sprint reports** from `production/sprints/` for the relevant period
    to understand planned work and context behind changes.
 
-4. **Read completed design documents** from `design/gdd/` for any new features
+4. **Read completed design documents** from `design/features/` for any new features
    that were implemented during this period.
 
 5. **Categorize every change** into one of these categories:
-   - **New Features**: Entirely new gameplay systems, modes, or content
+   - **New Features**: Entirely new features, screens, or capabilities
    - **Improvements**: Enhancements to existing features, UX improvements,
      performance gains
    - **Bug Fixes**: Corrections to broken behavior
-   - **Balance Changes**: Tuning of gameplay values, difficulty, economy
+   - **Changes**: Updates to configuration, settings, or behavior
    - **Known Issues**: Issues the team is aware of but have not yet resolved
 
 6. **Generate the INTERNAL changelog** (full technical detail):
@@ -65,8 +65,8 @@ Commits: [Count] ([first-hash]..[last-hash])
   - Commits: [hashes]
   - Owner: [who]
 
-## Balance Changes
-- [What was tuned] -- [Old value -> New value] -- [Design intent]
+## Changes
+- [What changed] -- [Old behavior -> New behavior]
   - Owner: [who]
 
 ## Technical Debt / Refactoring
@@ -83,51 +83,45 @@ Commits: [Count] ([first-hash]..[last-hash])
 - Lines removed: [N]
 ```
 
-7. **Generate the PLAYER-FACING changelog** (friendly, non-technical):
+7. **Generate the USER-FACING changelog** (friendly, non-technical):
 
 ```markdown
 # What is New in [Version]
 
 ## New Features
-- **[Feature Name]**: [Player-friendly description of what they can now do
+- **[Feature Name]**: [User-friendly description of what they can now do
   and why it is exciting. Focus on the experience, not the implementation.]
 
 ## Improvements
-- **[What improved]**: [How this makes the game better for the player.
+- **[What improved]**: [How this makes the app better for the user.
   Be specific but avoid jargon.]
 
 ## Bug Fixes
-- Fixed an issue where [describe what the player experienced, not what was
+- Fixed an issue where [describe what the user experienced, not what was
   wrong in the code]
-- Fixed [player-visible symptom]
-
-## Balance Changes
-- [What changed in player-understandable terms and the design intent.
-  Example: "Healing potions now restore 50 HP (up from 30) -- we felt
-  players needed more recovery options in late-game encounters."]
+- Fixed [user-visible symptom]
 
 ## Known Issues
-- We are aware of [issue description in player terms] and are working on a
+- We are aware of [issue description in user terms] and are working on a
   fix. [Workaround if one exists.]
 
 ---
-Thank you for playing! Your feedback helps us make the game better.
+Thank you for using [App Name]! Your feedback helps us make it better.
 Report issues at [link].
 ```
 
 8. **Output both changelogs** to the user. The internal changelog is the
-   primary working document. The player-facing changelog is ready for
-   community posting after review.
+   primary working document. The user-facing changelog is ready for
+   posting after review.
 
 ### Guidelines
 
 - Never expose internal code references, file paths, or developer names in
-  the player-facing changelog
+  the user-facing changelog
 - Group related changes together rather than listing individual commits
 - If a commit message is unclear, check the associated files and sprint data
   for context
-- Balance changes should always include the design reasoning, not just the
-  numbers
-- Known issues should be honest -- players appreciate transparency
+- Changes should always include the reasoning, not just the what
+- Known issues should be honest -- users appreciate transparency
 - If the git history is messy (merge commits, reverts, fixup commits), clean
   up the narrative rather than listing every commit literally

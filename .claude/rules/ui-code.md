@@ -1,15 +1,17 @@
 ---
 paths:
-  - "src/ui/**"
+  - "lib/**/presentation/**"
+  - "lib/shared/widgets/**"
 ---
 
-# UI Code Rules
+# Flutter UI Code Rules
 
-- UI must NEVER own or directly modify game state — display only, use commands/events to request changes
+- UI must NEVER own business logic — delegate to BLoC/Cubit/Provider
 - All UI text must go through the localization system — no hardcoded user-facing strings
-- Support both keyboard/mouse AND gamepad input for all interactive elements
-- All animations must be skippable and respect user motion/accessibility preferences
-- UI sounds trigger through the audio event system, not directly
-- UI must never block the game thread
-- Scalable text and colorblind modes are mandatory, not optional
-- Test all screens at minimum and maximum supported resolutions
+- Use `Theme.of(context)` for all colors and text styles — no hardcoded values
+- All animations must respect user motion/accessibility preferences (`MediaQuery.disableAnimations`)
+- UI must be responsive — test on multiple screen sizes and platforms
+- Use `const` constructors wherever possible to optimize rebuilds
+- Use `Semantics` widget for accessibility — all interactive elements must be labeled
+- Handle loading, error, and empty states for all async operations
+- Use `LayoutBuilder` for responsive layouts, not `MediaQuery.of(context).size`

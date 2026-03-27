@@ -1,26 +1,27 @@
-# Claude Code Game Studios -- Game Studio Agent Architecture
+# Agentic Mobile App Studio -- Flutter Cross-Platform Development
 
-Indie game development managed through 48 coordinated Claude Code subagents.
-Each agent owns a specific domain, enforcing separation of concerns and quality.
+Cross-platform mobile-first (iOS, Android, Web, Desktop) development managed through
+42 coordinated Claude Code subagents. Each agent owns a specific domain, enforcing
+separation of concerns and quality.
 
 ## Technology Stack
 
-- **Engine**: [CHOOSE: Godot 4 / Unity / Unreal Engine 5]
-- **Language**: [CHOOSE: GDScript / C# / C++ / Blueprint]
+- **Framework**: Flutter 3.x
+- **Language**: Dart
 - **Version Control**: Git with trunk-based development
-- **Build System**: [SPECIFY after choosing engine]
-- **Asset Pipeline**: [SPECIFY after choosing engine]
+- **Build System**: Flutter CLI (flutter build)
+- **Architecture**: Clean Architecture (domain/data/presentation layers)
 
-> **Note**: Engine-specialist agents exist for Godot, Unity, and Unreal with
-> dedicated sub-specialists. Use the set matching your engine.
+> **Note**: Platform-specialist agents exist for iOS, Android, Web, Windows, macOS, and Linux
+> with dedicated sub-specialists. Use the set matching your target platforms.
 
 ## Project Structure
 
 @.claude/docs/directory-structure.md
 
-## Engine Version Reference
+## Flutter Reference
 
-@docs/engine-reference/godot/VERSION.md
+@docs/engine-reference/flutter/VERSION.md
 
 ## Technical Preferences
 
@@ -42,7 +43,7 @@ Every task follows: **Question -> Options -> Decision -> Draft -> Approval**
 
 See `docs/COLLABORATIVE-DESIGN-PRINCIPLE.md` for full protocol and examples.
 
-> **First session?** If the project has no engine configured and no game concept,
+> **First session?** If the project has no Flutter SDK configured and no app concept,
 > run `/start` to begin the guided onboarding flow.
 
 ## Coding Standards

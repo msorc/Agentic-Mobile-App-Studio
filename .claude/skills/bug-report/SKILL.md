@@ -28,16 +28,16 @@ When invoked with a description:
 **Reporter**: [Name]
 
 ## Classification
-- **Category**: [Gameplay / UI / Audio / Visual / Performance / Crash / Network]
-- **System**: [Which game system is affected]
+- **Category**: [UI / Data / Performance / Crash / Security / Other]
+- **System**: [Which feature/system is affected]
 - **Frequency**: [Always / Often (>50%) / Sometimes (10-50%) / Rare (<10%)]
 - **Regression**: [Yes/No/Unknown -- was this working before?]
 
 ## Environment
 - **Build**: [Version or commit hash]
-- **Platform**: [OS, hardware if relevant]
-- **Scene/Level**: [Where in the game]
-- **Game State**: [Relevant state -- inventory, quest progress, etc.]
+- **Platform**: [OS, device type, browser if web]
+- **Screen/Route**: [Where in the app]
+- **App State**: [Relevant state -- logged in, settings, etc.]
 
 ## Reproduction Steps
 **Preconditions**: [Required state before starting]
@@ -51,7 +51,7 @@ When invoked with a description:
 
 ## Technical Context
 - **Likely affected files**: [List of files based on codebase search]
-- **Related systems**: [What other systems might be involved]
+- **Related systems**: [What other features might be involved]
 - **Possible root cause**: [If identifiable from the description]
 
 ## Evidence

@@ -10,7 +10,7 @@ When this skill is invoked:
 > **Explicit invocation only**: This skill should only run when the user explicitly requests it with `/hotfix`. Do not auto-invoke based on context matching.
 
 1. **Assess the emergency** — Read the bug description or ID. Determine severity:
-   - **S1 (Critical)**: Game unplayable, data loss, security vulnerability — hotfix immediately
+   - **S1 (Critical)**: App crashing, data loss, security vulnerability — hotfix immediately
    - **S2 (Major)**: Significant feature broken, workaround exists — hotfix within 24 hours
    - If severity is S3 or lower, recommend using the normal bug fix workflow instead
 
@@ -24,7 +24,7 @@ When this skill is invoked:
    Status: IN PROGRESS
 
    ### Problem
-   [Clear description of what is broken and the player impact]
+   [Clear description of what is broken and the user impact]
 
    ### Root Cause
    [To be filled during investigation]
@@ -36,9 +36,9 @@ When this skill is invoked:
    [What was tested and how]
 
    ### Approvals
-   - [ ] Fix reviewed by lead-programmer
+   - [ ] Fix reviewed by technical-lead
    - [ ] Regression test passed (qa-tester)
-   - [ ] Release approved (producer)
+   - [ ] Release approved (project-manager)
 
    ### Rollback Plan
    [How to revert if the fix causes new issues]
@@ -51,14 +51,14 @@ When this skill is invoked:
 
 4. **Investigate and implement the fix** — Focus on the minimal change that resolves the issue. Do NOT refactor, clean up, or add features alongside the hotfix.
 
-5. **Validate the fix** — Run targeted tests for the affected system. Check for regressions in adjacent systems.
+5. **Validate the fix** — Run targeted tests for the affected feature. Check for regressions in adjacent features.
 
 6. **Update the hotfix record** with root cause, fix details, and test results.
 
 6b. **Collect approvals** — Use the Task tool to request sign-off:
-   - `subagent_type: lead-programmer` — Review the fix for correctness and side effects
-   - `subagent_type: qa-tester` — Run targeted regression tests on the affected system
-   - `subagent_type: producer` — Approve deployment timing and communication plan
+   - `subagent_type: technical-lead` — Review the fix for correctness and side effects
+   - `subagent_type: qa-tester` — Run targeted regression tests on the affected feature
+   - `subagent_type: project-manager` — Approve deployment timing and communication plan
 
 7. **Output a summary** with: severity, root cause, fix applied, testing status, and what approvals are still needed before deployment.
 
@@ -67,4 +67,4 @@ When this skill is invoked:
 - Every hotfix must have a rollback plan documented before deployment
 - Hotfix branches merge to BOTH the release branch AND the development branch
 - All hotfixes require a post-incident review within 48 hours
-- If the fix is complex enough to need more than 4 hours, escalate to technical-director for a scope decision
+- If the fix is complex enough to need more than 4 hours, escalate to technical-lead for a scope decision

@@ -13,9 +13,16 @@
       "Bash(git rev-parse*)",
       "Bash(ls *)",
       "Bash(dir *)",
-      "Bash(python -m json.tool*)",
-      "Bash(python -m pytest*)",
-      "Bash(py -m pytest*)"
+      "Bash(flutter *)",
+      "Bash(dart *)",
+      "Bash(pub *)",
+      "Bash(flutter pub *)",
+      "Bash(dart analyze*)",
+      "Bash(flutter analyze*)",
+      "Bash(flutter test*)",
+      "Bash(dart test*)",
+      "Bash(flutter build*)",
+      "Bash(flutter doctor*)"
     ],
     "deny": [
       "Bash(rm -rf *)",

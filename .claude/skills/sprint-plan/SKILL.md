@@ -15,7 +15,7 @@ When this skill is invoked:
 2. **Read the previous sprint** (if any) from `production/sprints/` to
    understand velocity and carryover.
 
-3. **Scan design documents** in `design/gdd/` for features tagged as ready
+3. **Scan design documents** in `design/features/` for features tagged as ready
    for implementation.
 
 4. **Check the risk register** at `production/risk-register/`.
@@ -104,5 +104,5 @@ For `status`:
 ### Agent Consultation
 
 For comprehensive sprint planning, consider consulting:
-- `producer` agent for capacity planning, risk assessment, and cross-department coordination
-- `game-designer` agent for feature prioritization and design readiness assessment
+- `project-manager` agent for capacity planning, risk assessment, and cross-department coordination
+- `feature-developer` agent for feature prioritization and design readiness assessment

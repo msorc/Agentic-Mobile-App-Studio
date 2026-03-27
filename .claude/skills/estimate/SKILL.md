@@ -14,8 +14,8 @@ When this skill is invoked:
 2. **Read CLAUDE.md** for project context: tech stack, coding standards,
    architectural patterns, and any estimation guidelines.
 
-3. **Read relevant design documents** from `design/gdd/` if the task relates
-   to a documented feature or system.
+3. **Read relevant design documents** from `design/features/` if the task relates
+   to a documented feature.
 
 4. **Scan the codebase** to understand the systems affected by this task:
    - Identify files and modules that would need to change
@@ -63,7 +63,7 @@ Generated: [Date]
 
 | Factor | Assessment | Notes |
 |--------|-----------|-------|
-| Systems affected | [List] | [Core, gameplay, UI, etc.] |
+| Systems affected | [List] | [Core, data, UI, etc.] |
 | Files likely modified | [Count] | [Key files listed below] |
 | New code vs modification | [Ratio, e.g., 70% new / 30% modification] | |
 | Integration points | [Count] | [Which systems interact] |

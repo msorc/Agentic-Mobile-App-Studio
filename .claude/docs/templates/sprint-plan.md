@@ -14,10 +14,8 @@
 
 | Resource | Available Days | Allocated | Buffer (20%) | Remaining |
 |----------|---------------|-----------|-------------|-----------|
-| Programming | | | | |
+| Development | | | | |
 | Design | | | | |
-| Art | | | | |
-| Audio | | | | |
 | QA | | | | |
 | **Total** | | | | |
 
@@ -60,11 +58,11 @@
 ## Definition of Done
 
 - [ ] All Must Have tasks completed and passing acceptance criteria
-- [ ] No S1 or S2 bugs in delivered features
-- [ ] Code reviewed and merged to develop
-- [ ] Design documents updated for any deviations from spec
-- [ ] Test cases written and executed for all new features
-- [ ] Asset naming and format standards met
+- [ ] No P0 or P1 bugs in delivered features
+- [ ] Code reviewed and merged to main/develop
+- [ ] Documentation updated for any deviations from spec
+- [ ] Tests written and passing for all new features
+- [ ] Flutter analyzer passes with no errors
 
 ## Daily Status Tracking
 

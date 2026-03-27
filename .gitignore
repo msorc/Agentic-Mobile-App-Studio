@@ -27,6 +27,7 @@ bin/
 obj/
 out/
 dist/
+tmp/
 *.exe
 *.dll
 *.so

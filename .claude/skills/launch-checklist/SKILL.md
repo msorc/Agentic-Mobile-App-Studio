@@ -28,7 +28,7 @@ When this skill is invoked:
 4. **Generate the launch checklist**:
 
 ```markdown
-# Launch Checklist: [Game Title]
+# Launch Checklist: [App Name]
 Target Launch: [Date or DRY RUN]
 Generated: [Date]
 
@@ -37,7 +37,7 @@ Generated: [Date]
 ## 1. Code Readiness
 
 ### Build Health
-- [ ] Clean build on all target platforms
+- [ ] Clean build on all target platforms (iOS, Android, Web, Desktop)
 - [ ] Zero compiler warnings
 - [ ] All unit tests passing
 - [ ] All integration tests passing
@@ -58,10 +58,9 @@ Generated: [Date]
 
 ### Security
 - [ ] No exposed API keys or credentials in source
-- [ ] Save data encrypted
+- [ ] Sensitive data encrypted (user data, tokens)
 - [ ] Network communication secured (TLS/DTLS)
-- [ ] Anti-cheat measures active (if multiplayer)
-- [ ] Input validation on all server endpoints (if multiplayer)
+- [ ] Input validation on all server endpoints
 - [ ] Privacy policy compliance verified
 
 ---
@@ -70,27 +69,24 @@ Generated: [Date]
 
 ### Assets
 - [ ] All placeholder art replaced with final assets
-- [ ] All placeholder audio replaced with final audio
-- [ ] Audio mix finalized and approved by audio director
-- [ ] All VFX polished and performance-verified
 - [ ] No missing or broken asset references
 - [ ] Asset naming conventions enforced
+- [ ] App icons and splash screens finalized for all platforms
 
 ### Text and Localization
-- [ ] All player-facing text proofread
+- [ ] All user-facing text proofread
 - [ ] No hardcoded strings (all externalized for localization)
 - [ ] All supported languages translated and verified
 - [ ] Text fits UI in all languages (text fitting pass complete)
 - [ ] Font coverage verified for all supported languages
 - [ ] Credits complete, accurate, and up to date
 
-### Game Content
-- [ ] All levels/maps playable from start to finish
-- [ ] Tutorial flow complete and tested with new players
-- [ ] All achievements/trophies implemented and tested
-- [ ] Save/load works correctly for all game states
-- [ ] Difficulty settings balanced and tested
-- [ ] End-game/credits sequence complete
+### App Content
+- [ ] All primary user flows complete and tested
+- [ ] Onboarding flow complete and tested with new users
+- [ ] Settings and preferences working correctly
+- [ ] All deep links verified
+- [ ] Error states and empty states designed and implemented
 
 ---
 
@@ -100,24 +96,23 @@ Generated: [Date]
 - [ ] Full regression test suite passed
 - [ ] Zero S1 (Critical) bugs open
 - [ ] Zero S2 (Major) bugs open (or documented exceptions)
-- [ ] Soak test passed (8+ hours continuous play)
-- [ ] Multiplayer stress test passed (if applicable)
+- [ ] Soak test passed (8+ hours continuous use)
 - [ ] All critical user paths tested on every platform
-- [ ] Edge cases tested (full storage, no network, suspend/resume)
+- [ ] Edge cases tested (full storage, no network, suspend/resume, background/foreground)
 
 ### Platform Certification
-- [ ] PC: Steam/Epic/GOG SDK requirements met
-- [ ] Console: TRC/TCR/Lotcheck submission prepared
-- [ ] Mobile: App Store/Play Store guidelines compliant
-- [ ] Accessibility: minimum standards met (remapping, text scaling, colorblind)
-- [ ] Age ratings obtained (ESRB, PEGI, regional)
+- [ ] iOS: App Store Review Guidelines compliant
+- [ ] Android: Play Store policy compliant
+- [ ] Web: WCAG 2.1 accessibility standards met
+- [ ] Desktop: Platform-specific requirements met
+- [ ] Accessibility: minimum standards met (remapping, text scaling, screen reader)
 
 ### Performance
 - [ ] Target FPS met on minimum spec hardware
 - [ ] Load times within budget on all platforms
 - [ ] Memory usage within budget on all platforms
-- [ ] Network bandwidth within targets (if multiplayer)
-- [ ] No frame hitches in critical gameplay moments
+- [ ] No frame hitches in critical user moments
+- [ ] Offline functionality verified
 
 ---
 
@@ -126,25 +121,23 @@ Generated: [Date]
 ### Store Pages
 - [ ] Store page copy finalized and proofread
 - [ ] Screenshots current and per-platform resolution
-- [ ] Trailers current and approved
+- [ ] App preview videos current and approved
 - [ ] Key art and capsule images finalized
-- [ ] System requirements accurate (PC)
-- [ ] Pricing configured for all regions
-- [ ] Pre-purchase/wishlist campaigns active (if applicable)
+- [ ] System requirements accurate
+- [ ] Pricing configured for all regions (if applicable)
 
 ### Legal
 - [ ] EULA finalized and approved by legal
 - [ ] Privacy policy published and linked
 - [ ] Third-party license attributions complete
-- [ ] Music/audio licensing verified
-- [ ] Trademark/IP clearance confirmed
 - [ ] GDPR/CCPA compliance verified (data collection, consent, deletion)
+- [ ] App permissions justified and documented
 
 ---
 
 ## 5. Infrastructure
 
-### Servers (if multiplayer/online)
+### Backend (if applicable)
 - [ ] Production servers provisioned and load-tested
 - [ ] Auto-scaling configured and tested
 - [ ] Database backups configured
@@ -166,16 +159,13 @@ Generated: [Date]
 ### Community Readiness
 - [ ] Community guidelines published
 - [ ] Moderation team briefed and tools ready
-- [ ] Discord/forum/social channels set up
-- [ ] FAQ and known issues page prepared
 - [ ] Support email/ticketing system active
 
 ### Marketing
-- [ ] Launch trailer published
-- [ ] Press/influencer review keys distributed
+- [ ] App Store optimization complete
+- [ ] Press/influencer review keys distributed (if applicable)
 - [ ] Social media launch posts scheduled
-- [ ] Launch day blog post/dev update drafted
-- [ ] Patch notes for launch version published
+- [ ] Launch day blog post/update drafted
 
 ---
 
@@ -190,7 +180,7 @@ Generated: [Date]
 
 ### Day-One Plan
 - [ ] Day-one patch prepared (if needed)
-- [ ] Server unlock/go-live procedure documented
+- [ ] Go-live procedure documented
 - [ ] Launch monitoring dashboard bookmarked by all leads
 - [ ] War room/channel established for launch day
 
@@ -207,10 +197,9 @@ Generated: [Date]
 [List items that have documented workarounds or accepted risk]
 
 ### Sign-Offs Required
-- [ ] Creative Director — Content and experience quality
-- [ ] Technical Director — Technical health and stability
+- [ ] Technical Lead — Technical health and stability
 - [ ] QA Lead — Quality and test coverage
-- [ ] Producer — Schedule and overall readiness
+- [ ] Project Manager — Schedule and overall readiness
 - [ ] Release Manager — Build and deployment readiness
 ```
 

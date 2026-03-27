@@ -14,10 +14,9 @@ When this skill is invoked:
    role is specified.
 
 3. **Scan the codebase** for the relevant area:
-   - For programmers: scan `src/` for architecture, patterns, key files
+   - For programmers: scan `lib/` for architecture, patterns, key files
    - For designers: scan `design/` for existing design documents
-   - For narrative: scan `design/narrative/` for world-building and story docs
-   - For QA: scan `tests/` for existing test coverage
+   - For QA: scan `test/` for existing test coverage
    - For production: scan `production/` for current sprint and milestone
 
 4. **Read recent changes** (git log if available) to understand current momentum.
@@ -28,7 +27,7 @@ When this skill is invoked:
 # Onboarding: [Role/Area]
 
 ## Project Summary
-[2-3 sentence summary of what this game is and its current state]
+[2-3 sentence summary of what this app is and its current state]
 
 ## Your Role
 [What this role does on this project, key responsibilities, who you report to]
@@ -54,7 +53,7 @@ When this skill is invoked:
 [What the team is working on now and what is expected of this role]
 
 ## Key Dependencies
-[What other roles/systems this role interacts with most]
+[What other roles/features this role interacts with most]
 
 ## Common Pitfalls
 [Things that trip up new contributors in this area]

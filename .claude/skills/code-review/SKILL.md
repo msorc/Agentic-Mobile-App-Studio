@@ -12,22 +12,22 @@ When this skill is invoked:
 
 2. **Read the CLAUDE.md** for project coding standards.
 
-3. **Identify the system category** (engine, gameplay, AI, networking, UI, tools)
+3. **Identify the feature category** (data, UI, networking, state management, utilities)
    and apply category-specific standards.
 
 4. **Evaluate against coding standards**:
    - [ ] Public methods and classes have doc comments
    - [ ] Cyclomatic complexity under 10 per method
    - [ ] No method exceeds 40 lines (excluding data declarations)
-   - [ ] Dependencies are injected (no static singletons for game state)
+   - [ ] Dependencies are injected (no static singletons for app state)
    - [ ] Configuration values loaded from data files
-   - [ ] Systems expose interfaces (not concrete class dependencies)
+   - [ ] Features expose interfaces (not concrete class dependencies)
 
 5. **Check architectural compliance**:
-   - [ ] Correct dependency direction (engine <- gameplay, not reverse)
+   - [ ] Correct dependency direction (domain <- data, domain <- presentation)
    - [ ] No circular dependencies between modules
-   - [ ] Proper layer separation (UI does not own game state)
-   - [ ] Events/signals used for cross-system communication
+   - [ ] Proper layer separation (UI does not own business state)
+   - [ ] Events/signals used for cross-feature communication
    - [ ] Consistent with established patterns in the codebase
 
 6. **Check SOLID compliance**:
@@ -37,9 +37,9 @@ When this skill is invoked:
    - [ ] Interface Segregation: No fat interfaces
    - [ ] Dependency Inversion: Depends on abstractions, not concretions
 
-7. **Check for common game development issues**:
-   - [ ] Frame-rate independence (delta time usage)
-   - [ ] No allocations in hot paths (update loops)
+7. **Check for common mobile development issues**:
+   - [ ] Proper state disposal (no memory leaks in stateful widgets)
+   - [ ] No allocations in hot paths (build/render loops)
    - [ ] Proper null/empty state handling
    - [ ] Thread safety where required
    - [ ] Resource cleanup (no leaks)
@@ -47,7 +47,7 @@ When this skill is invoked:
 8. **Output the review** in this format:
 
 ```
-## Code Review: [File/System Name]
+## Code Review: [File/Feature Name]
 
 ### Standards Compliance: [X/6 passing]
 [List failures with line references]
@@ -58,8 +58,8 @@ When this skill is invoked:
 ### SOLID: [COMPLIANT / ISSUES FOUND]
 [List specific violations]
 
-### Game-Specific Concerns
-[List game development specific issues]
+### App-Specific Concerns
+[List mobile/app development specific issues]
 
 ### Positive Observations
 [What is done well -- always include this section]

@@ -1,7 +1,7 @@
 ---
 name: design-system
-description: "Guided, section-by-section GDD authoring for a single game system. Gathers context from existing docs, walks through each required section collaboratively, cross-references dependencies, and writes incrementally to file."
-argument-hint: "<system-name> (e.g., 'combat-system', 'inventory', 'dialogue')"
+description: "Guided, section-by-section feature spec authoring. Gathers context from existing docs, walks through each required section collaboratively, cross-references dependencies, and writes incrementally to file."
+argument-hint: "<feature-name> (e.g., 'auth', 'notifications', 'offline-sync')"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Write, Edit, Task, AskUserQuestion, TodoWrite
 ---
@@ -10,13 +10,13 @@ When this skill is invoked:
 
 ## 1. Parse Arguments & Validate
 
-A system name argument is **required**. If missing, fail with:
-> "Usage: `/design-system <system-name>` — e.g., `/design-system combat-system`
-> Run `/map-systems` first to create the systems index, then use this skill
-> to write individual system GDDs."
+A feature name argument is **required**. If missing, fail with:
+> "Usage: `/design-system <feature-name>` — e.g., `/design-system auth`
+> Run `/map-systems` first to create the features index, then use this skill
+> to write individual feature specs."
 
-Normalize the system name to kebab-case for the filename (e.g., "combat system"
-becomes `combat-system`).
+Normalize the feature name to kebab-case for the filename (e.g., "offline sync"
+becomes `offline-sync`).
 
 ---
 
@@ -27,85 +27,85 @@ primary advantage over ad-hoc design — it arrives informed.
 
 ### 2a: Required Reads
 
-- **Game concept**: Read `design/gdd/game-concept.md` — fail if missing:
-  > "No game concept found. Run `/brainstorm` first."
-- **Systems index**: Read `design/gdd/systems-index.md` — fail if missing:
-  > "No systems index found. Run `/map-systems` first to map your systems."
-- **Target system**: Find the system in the index. If not listed, warn:
-  > "[system-name] is not in the systems index. Would you like to add it, or
-  > design it as an off-index system?"
+- **App concept**: Read `design/app-concept.md` — fail if missing:
+  > "No app concept found. Run `/feature-brainstorm` first."
+- **Features index**: Read `design/features/index.md` — fail if missing:
+  > "No features index found. Run `/map-systems` first to map your features."
+- **Target feature**: Find the feature in the index. If not listed, warn:
+  > "[feature-name] is not in the features index. Would you like to add it, or
+  > design it as an off-index feature?"
 
 ### 2b: Dependency Reads
 
-From the systems index, identify:
-- **Upstream dependencies**: Systems this one depends on. Read their GDDs if they
-  exist (these contain decisions this system must respect).
-- **Downstream dependents**: Systems that depend on this one. Read their GDDs if
-  they exist (these contain expectations this system must satisfy).
+From the features index, identify:
+- **Upstream dependencies**: Features this one depends on. Read their specs if they
+  exist (these contain decisions this feature must respect).
+- **Downstream dependents**: Features that depend on this one. Read their specs if
+  they exist (these contain expectations this feature must satisfy).
 
-For each dependency GDD that exists, extract and hold in context:
-- Key interfaces (what data flows between the systems)
-- Formulas that reference this system's outputs
-- Edge cases that assume this system's behavior
-- Tuning knobs that feed into this system
+For each dependency spec that exists, extract and hold in context:
+- Key interfaces (what data flows between the features)
+- Configuration values that reference this feature's outputs
+- Edge cases that assume this feature's behavior
+- Tuning knobs that feed into this feature
 
 ### 2c: Optional Reads
 
-- **Game pillars**: Read `design/gdd/game-pillars.md` if it exists
-- **Existing GDD**: Read `design/gdd/[system-name].md` if it exists (resume, don't
+- **App pillars**: Read `design/app-pillars.md` if it exists
+- **Existing spec**: Read `design/features/[feature-name].md` if it exists (resume, don't
   restart from scratch)
-- **Related GDDs**: Glob `design/gdd/*.md` and read any that are thematically related
-  (e.g., if designing "status-effects", also read "combat-system" even if it's not
+- **Related specs**: Glob `design/features/*.md` and read any that are thematically related
+  (e.g., if designing "offline-sync", also read "auth" even if it's not
   a direct dependency)
 
 ### 2d: Present Context Summary
 
 Before starting design work, present a brief summary to the user:
 
-> **Designing: [System Name]**
+> **Designing: [Feature Name]**
 > - Priority: [from index] | Layer: [from index]
-> - Depends on: [list, noting which have GDDs vs. undesigned]
-> - Depended on by: [list, noting which have GDDs vs. undesigned]
-> - Existing decisions to respect: [key constraints from dependency GDDs]
-> - Pillar alignment: [which pillar(s) this system primarily serves]
+> - Depends on: [list, noting which have specs vs. undesigned]
+> - Depended on by: [list, noting which have specs vs. undesigned]
+> - Existing decisions to respect: [key constraints from dependency specs]
+> - Pillar alignment: [which pillar(s) this feature primarily serves]
 
 If any upstream dependencies are undesigned, warn:
-> "[dependency] doesn't have a GDD yet. We'll need to make assumptions about
+> "[dependency] doesn't have a spec yet. We'll need to make assumptions about
 > its interface. Consider designing it first, or we can define the expected
 > contract and flag it as provisional."
 
 Use `AskUserQuestion`:
-- "Ready to start designing [system-name]?"
+- "Ready to start designing [feature-name]?"
   - Options: "Yes, let's go", "Show me more context first", "Design a dependency first"
 
 ---
 
 ## 3. Create File Skeleton
 
-Once the user confirms, **immediately** create the GDD file with empty section
+Once the user confirms, **immediately** create the feature spec file with empty section
 headers. This ensures incremental writes have a target.
 
-Use the template structure from `.claude/docs/templates/game-design-document.md`:
+Use the template structure from `.claude/docs/templates/feature-spec.md`:
 
 ```markdown
-# [System Name]
+# [Feature Name]
 
 > **Status**: In Design
 > **Author**: [user + agents]
 > **Last Updated**: [today's date]
-> **Implements Pillar**: [from context]
+> **Serves Pillar**: [from context]
 
 ## Overview
 
 [To be designed]
 
-## Player Fantasy
+## User Experience
 
 [To be designed]
 
 ## Detailed Design
 
-### Core Rules
+### Core Behavior
 
 [To be designed]
 
@@ -113,11 +113,11 @@ Use the template structure from `.claude/docs/templates/game-design-document.md`
 
 [To be designed]
 
-### Interactions with Other Systems
+### Interactions with Other Features
 
 [To be designed]
 
-## Formulas
+## Configuration
 
 [To be designed]
 
@@ -129,11 +129,7 @@ Use the template structure from `.claude/docs/templates/game-design-document.md`
 
 [To be designed]
 
-## Tuning Knobs
-
-[To be designed]
-
-## Visual/Audio Requirements
+## Platform Considerations
 
 [To be designed]
 
@@ -150,12 +146,12 @@ Use the template structure from `.claude/docs/templates/game-design-document.md`
 [To be designed]
 ```
 
-Ask: "May I create the skeleton file at `design/gdd/[system-name].md`?"
+Ask: "May I create the skeleton file at `design/features/[feature-name].md`?"
 
 After writing, update `production/session-state/active.md` with:
-- Task: Designing [system-name] GDD
+- Task: Designing [feature-name] spec
 - Current section: Starting (skeleton created)
-- File: design/gdd/[system-name].md
+- File: design/features/[feature-name].md
 
 ---
 
@@ -170,7 +166,7 @@ Context  ->  Questions  ->  Options  ->  Decision  ->  Draft  ->  Approval  ->  
 ```
 
 1. **Context**: State what this section needs to contain, and surface any relevant
-   decisions from dependency GDDs that constrain it.
+   decisions from dependency specs that constrain it.
 
 2. **Questions**: Ask clarifying questions specific to this section. Use
    `AskUserQuestion` for constrained questions, conversational text for open-ended
@@ -204,78 +200,71 @@ Each section has unique design considerations and may benefit from specialist ag
 **Goal**: One paragraph a stranger could read and understand.
 
 **Questions to ask**:
-- What is this system in one sentence?
-- How does a player interact with it? (active/passive/automatic)
-- Why does this system exist — what would the game lose without it?
+- What is this feature in one sentence?
+- How does a user interact with it? (active/passive/automatic)
+- Why does this feature exist — what would the app lose without it?
 
-**Cross-reference**: Check that the description aligns with how the systems index
+**Cross-reference**: Check that the description aligns with how the features index
 describes it. Flag discrepancies.
 
 ---
 
-### Section B: Player Fantasy
+### Section B: User Experience
 
-**Goal**: The emotional target — what the player should *feel*.
+**Goal**: The user-centered target — what the user should *feel* and *accomplish*.
 
 **Questions to ask**:
-- What emotion or power fantasy does this serve?
-- What reference games nail this feeling? What specifically creates it?
-- Is this a "system you love engaging with" or "infrastructure you don't notice"?
+- What user need or pain point does this serve?
+- What is the primary user journey through this feature?
+- Is this "a feature users love engaging with" or "infrastructure they don't notice"?
 
-**Cross-reference**: Must align with the game pillars. If the system serves a pillar,
+**Cross-reference**: Must align with the app pillars. If the feature serves a pillar,
 quote the relevant pillar text.
 
 ---
 
-### Section C: Detailed Design (Core Rules, States, Interactions)
+### Section C: Detailed Design (Core Behavior, States, Interactions)
 
 **Goal**: Unambiguous specification a programmer could implement without questions.
 
 This is usually the largest section. Break it into sub-sections:
 
-1. **Core Rules**: The fundamental mechanics. Use numbered rules for sequential
+1. **Core Behavior**: The fundamental logic. Use numbered rules for sequential
    processes, bullets for properties.
-2. **States and Transitions**: If the system has states, map every state and
+2. **States and Transitions**: If the feature has states, map every state and
    every valid transition. Use a table.
-3. **Interactions with Other Systems**: For each dependency (upstream and downstream),
+3. **Interactions with Other Features**: For each dependency (upstream and downstream),
    specify what data flows in, what flows out, and who owns the interface.
 
 **Questions to ask**:
-- Walk me through a typical use of this system, step by step
-- What are the decision points the player faces?
-- What can the player NOT do? (Constraints are as important as capabilities)
+- Walk me through a typical use of this feature, step by step
+- What are the key decisions the user makes?
+- What can the user NOT do? (Constraints are as important as capabilities)
 
-**Agent delegation**: For complex mechanics, use the Task tool to delegate to
-`game-designer` for high-level design review, or `systems-designer` for detailed
-mechanical modeling. Provide the full context gathered in Phase 2.
+**Agent delegation**: For complex features, use the Task tool to delegate to
+`feature-developer` for implementation review, or `state-management-specialist` for
+state machine modeling. Provide the full context gathered in Phase 2.
 
 **Cross-reference**: For each interaction listed, verify it matches what the
-dependency GDD specifies. If the dependency says "damage is calculated as X" and
-this system expects something different, flag the conflict.
+dependency spec specifies. If auth says "tokens expire after 15min" and
+this feature expects longer sessions, flag the conflict.
 
 ---
 
-### Section D: Formulas
+### Section D: Configuration
 
-**Goal**: Every mathematical formula, with variables defined, ranges specified,
-and edge cases noted.
+**Goal**: Every configurable value, with safe ranges and extreme behaviors.
 
 **Questions to ask**:
-- What are the core calculations this system performs?
-- Should scaling be linear, logarithmic, or stepped?
-- What should the output ranges be at early/mid/late game?
+- What values should operators be able to tweak without code changes?
+- For each knob, what breaks if it's set too high? Too low?
+- Which knobs interact with each other? (Changing A makes B irrelevant)
 
-**Agent delegation**: For formula-heavy systems (combat, economy, progression),
-delegate to `systems-designer` via the Task tool. Provide:
-- The Core Rules from Section C (already written to file)
-- Tuning goals from the user
-- Balance context from dependency GDDs
+**Agent delegation**: For configuration-heavy features, delegate to
+`feature-developer` to identify which values should be runtime-configurable.
 
-The agent should return proposed formulas with variable tables and expected output
-ranges. Present these to the user for review before approving.
-
-**Cross-reference**: If a dependency GDD defines a formula whose output feeds into
-this system, reference it explicitly. Don't reinvent — connect.
+**Cross-reference**: If a dependency spec defines configuration that affects this
+feature, reference it explicitly. Don't reinvent — connect.
 
 ---
 
@@ -286,80 +275,87 @@ this system, reference it explicitly. Don't reinvent — connect.
 **Questions to ask**:
 - What happens at zero? At maximum? At negative values?
 - What happens when two effects trigger simultaneously?
-- What happens if the player tries to exploit this? (Identify degenerate strategies)
+- What happens if the user tries to exploit this? (Identify edge cases)
+- Network unavailable, slow, or intermittent?
 
-**Agent delegation**: For systems with complex interactions, delegate to
-`systems-designer` to identify edge cases from the formula space. For narrative
-systems, consult `narrative-director` for story-breaking edge cases.
+**Agent delegation**: For features with complex interactions, delegate to
+`feature-developer` to identify edge cases from the logic space.
 
-**Cross-reference**: Check edge cases against dependency GDDs. If combat says
-"damage cannot go below 1" but this system can reduce damage to 0, that's a
-conflict to resolve.
+**Cross-reference**: Check edge cases against dependency specs. If auth says
+"tokens are invalidated on password change" but this feature caches tokens
+indefinitely, that's a conflict to resolve.
 
 ---
 
 ### Section F: Dependencies
 
-**Goal**: Map every system connection with direction and nature.
+**Goal**: Map every feature connection with direction and nature.
 
 This section is partially pre-filled from the context gathering phase. Present the
-known dependencies from the systems index and ask:
+known dependencies from the features index and ask:
 - Are there dependencies I'm missing?
 - For each dependency, what's the specific data interface?
-- Which dependencies are hard (system cannot function without it) vs. soft
+- Which dependencies are hard (feature cannot function without it) vs. soft
   (enhanced by it but works without it)?
 
-**Cross-reference**: This section must be bidirectionally consistent. If this system
-lists "depends on Combat", then the Combat GDD should list "depended on by [this
-system]". Flag any one-directional dependencies for correction.
+**Cross-reference**: This section must be bidirectionally consistent. If this feature
+lists "depends on Auth", then the Auth spec should list "depended on by [this
+feature]". Flag any one-directional dependencies for correction.
 
 ---
 
-### Section G: Tuning Knobs
+### Section G: Platform Considerations
 
-**Goal**: Every designer-adjustable value, with safe ranges and extreme behaviors.
+**Goal**: Note any platform-specific behavior, limitations, or requirements.
 
 **Questions to ask**:
-- What values should designers be able to tweak without code changes?
-- For each knob, what breaks if it's set too high? Too low?
-- Which knobs interact with each other? (Changing A makes B irrelevant)
+- Does this feature work differently on iOS vs Android vs Web?
+- Are there platform-specific APIs or capabilities?
+- What are the offline behavior expectations?
+- Are there permission requirements (camera, location, notifications)?
 
-**Agent delegation**: If formulas are complex, delegate to `systems-designer`
-to derive tuning knobs from the formula variables.
-
-**Cross-reference**: If a dependency GDD lists tuning knobs that affect this system,
-reference them here. Don't create duplicate knobs — point to the source of truth.
+**Cross-reference**: Consult platform-specific docs in `docs/engine-reference/flutter/`
+for platform capabilities and limitations.
 
 ---
 
-### Section H: Acceptance Criteria
+### Section H: UI Requirements
 
-**Goal**: Testable conditions that prove the system works as designed.
+**Goal**: Specify what interfaces this feature exposes to the UI layer.
+
+**Questions to ask**:
+- What screens or widgets does this feature need?
+- What data does the UI need to display?
+- What user actions trigger feature behavior?
+- How does offline state affect the UI?
+
+**Agent delegation**: For complex UI, coordinate with `mobile-ux-specialist`
+for user flows and interaction patterns.
+
+---
+
+### Section I: Acceptance Criteria
+
+**Goal**: Testable conditions that prove the feature works as designed.
 
 **Questions to ask**:
 - What's the minimum set of tests that prove this works?
-- What performance budget does this system get? (frame time, memory)
+- What performance budget does this feature get? (load time, memory)
 - What would a QA tester check first?
 
-**Cross-reference**: Include criteria that verify cross-system interactions work,
-not just this system in isolation.
+**Cross-reference**: Include criteria that verify cross-feature interactions work,
+not just this feature in isolation.
 
 ---
 
-### Optional Sections: Visual/Audio, UI Requirements, Open Questions
+### Optional Sections: Open Questions
 
-These sections are included in the template but aren't part of the 8 required
-sections. Offer them after the required sections are done:
+This section is included in the template but isn't part of the required
+sections. Offer it after the required sections are done:
 
 Use `AskUserQuestion`:
-- "The 8 required sections are complete. Do you want to also define Visual/Audio
-  requirements, UI requirements, or capture open questions?"
-  - Options: "Yes, all three", "Just open questions", "Skip — I'll add these later"
-
-For **Visual/Audio**: Coordinate with `art-director` and `audio-director` if detail
-is needed. Often a brief note suffices at the GDD stage.
-
-For **UI Requirements**: Coordinate with `ux-designer` for complex UI systems.
+- "The required sections are complete. Do you want to capture open questions now?"
+  - Options: "Yes", "Skip — I'll add these later"
 
 For **Open Questions**: Capture anything that came up during design that wasn't
 fully resolved. Each question should have an owner and target resolution date.
@@ -372,10 +368,10 @@ After all sections are written:
 
 ### 5a: Self-Check
 
-Read back the complete GDD from file (not from conversation memory — the file is
+Read back the complete spec from file (not from conversation memory — the file is
 the source of truth). Verify:
-- All 8 required sections have real content (not placeholders)
-- Formulas reference defined variables
+- All required sections have real content (not placeholders)
+- Configuration references defined variables
 - Edge cases have resolutions
 - Dependencies are listed with interfaces
 - Acceptance criteria are testable
@@ -384,50 +380,50 @@ the source of truth). Verify:
 
 Present a completion summary:
 
-> **GDD Complete: [System Name]**
+> **Spec Complete: [Feature Name]**
 > - Sections written: [list]
 > - Provisional assumptions: [list any assumptions about undesigned dependencies]
-> - Cross-system conflicts found: [list or "none"]
+> - Cross-feature conflicts found: [list or "none"]
 
 Use `AskUserQuestion`:
-- "Run `/design-review` now to validate the GDD?"
+- "Run `/design-review` now to validate the spec?"
   - Options: "Yes, run review now", "I'll review it myself first", "Skip review"
 
 If yes, invoke the design-review skill on the completed file.
 
-### 5c: Update Systems Index
+### 5c: Update Features Index
 
-After the GDD is complete (and optionally reviewed):
+After the spec is complete (and optionally reviewed):
 
-- Read the systems index
-- Update the target system's row:
+- Read the features index
+- Update the target feature's row:
   - If design-review was run and verdict is APPROVED: Status → "Approved"
   - If design-review was run and verdict is NEEDS REVISION: Status → "In Review"
   - If design-review was skipped: Status → "Designed" (pending review)
   - If the user chose "I'll review it myself first": Status → "Designed"
-  - Design Doc: link to `design/gdd/[system-name].md`
+  - Design Doc: link to `design/features/[feature-name].md`
 - Update the Progress Tracker counts
 
-Ask: "May I update the systems index at `design/gdd/systems-index.md`?"
+Ask: "May I update the features index at `design/features/index.md`?"
 
 ### 5d: Update Session State
 
 Update `production/session-state/active.md` with:
-- Task: [system-name] GDD
+- Task: [feature-name] spec
 - Status: Complete (or In Review if design-review was run)
-- File: design/gdd/[system-name].md
-- Sections: All 8 written
-- Next: [suggest next system from design order]
+- File: design/features/[feature-name].md
+- Sections: All written
+- Next: [suggest next feature from design order]
 
 ### 5e: Suggest Next Steps
 
 Use `AskUserQuestion`:
 - "What's next?"
   - Options:
-    - "Design next system ([next-in-order])" — if undesigned systems remain
+    - "Design next feature ([next-in-order])" — if undesigned features remain
     - "Fix review findings" — if design-review flagged issues
     - "Stop here for this session"
-    - "Run `/gate-check`" — if enough MVP systems are designed
+    - "Run `/gate-check`" — if enough MVP features are designed
 
 ---
 
@@ -436,20 +432,19 @@ Use `AskUserQuestion`:
 This skill delegates to specialist agents for domain expertise. The main session
 orchestrates the overall flow; agents provide expert content.
 
-| System Category | Primary Agent | Supporting Agent(s) |
+| Feature Category | Primary Agent | Supporting Agent(s) |
 |----------------|---------------|---------------------|
-| Combat, damage, health | `game-designer` | `systems-designer` (formulas), `ai-programmer` (enemy AI) |
-| Economy, loot, crafting | `economy-designer` | `systems-designer` (curves), `game-designer` (loops) |
-| Progression, XP, skills | `game-designer` | `systems-designer` (curves), `economy-designer` (sinks) |
-| Dialogue, quests, lore | `game-designer` | `narrative-director` (story), `writer` (content) |
-| UI systems (HUD, menus) | `game-designer` | `ux-designer` (flows), `ui-programmer` (feasibility) |
-| Audio systems | `game-designer` | `audio-director` (direction), `sound-designer` (specs) |
-| AI, pathfinding, behavior | `game-designer` | `ai-programmer` (implementation), `systems-designer` (scoring) |
-| Level/world systems | `game-designer` | `level-designer` (spatial), `world-builder` (lore) |
-| Camera, input, controls | `game-designer` | `ux-designer` (feel), `gameplay-programmer` (feasibility) |
+| Authentication, authorization | `feature-developer` | `security-engineer` (security review) |
+| Data persistence, offline | `feature-developer` | `state-management-specialist` (state) |
+| Notifications, messaging | `feature-developer` | `platform-specific` (push notifications) |
+| Payments, subscriptions | `feature-developer` | `security-engineer` (PCI compliance) |
+| Analytics, tracking | `analytics-engineer` | `feature-developer` (integration) |
+| UI features (search, filters) | `mobile-ux-specialist` | `ui-engineer` (implementation) |
+| Camera, media | `feature-developer` | `platform-specific` (iOS/Android APIs) |
+| Location, maps | `feature-developer` | `platform-specific` (permissions) |
 
 **When delegating via Task tool**:
-- Provide: system name, game concept summary, dependency GDD excerpts, the specific
+- Provide: feature name, app concept summary, dependency spec excerpts, the specific
   section being worked on, and what question needs expert input
 - The agent returns analysis/proposals to the main session
 - The main session presents the agent's output to the user via `AskUserQuestion`
@@ -462,9 +457,9 @@ orchestrates the overall flow; agents provide expert content.
 
 If the session is interrupted (compaction, crash, new session):
 
-1. Read `production/session-state/active.md` — it records the current system and
+1. Read `production/session-state/active.md` — it records the current feature and
    which sections are complete
-2. Read `design/gdd/[system-name].md` — sections with real content are done;
+2. Read `design/features/[feature-name].md` — sections with real content are done;
    sections with `[To be designed]` still need work
 3. Resume from the next incomplete section — no need to re-discuss completed ones
 
@@ -482,15 +477,15 @@ This skill follows the collaborative design principle at every step:
    - Phase 2: "Ready to start, or need more context?"
    - Phase 3: "May I create the skeleton?"
    - Phase 4 (each section): Design questions, approach options, draft approval
-   - Phase 5: "Run design review? Update systems index? What's next?"
+   - Phase 5: "Run design review? Update features index? What's next?"
 3. **"May I write to [filepath]?"** before the skeleton and before each section write
 4. **Incremental writing**: Each section is written to file immediately after approval
 5. **Session state updates**: After every section write
-6. **Cross-referencing**: Every section checks existing GDDs for conflicts
+6. **Cross-referencing**: Every section checks existing specs for conflicts
 7. **Specialist routing**: Complex sections get expert agent input, presented to
    the user for decision — never written silently
 
-**Never** auto-generate the full GDD and present it as a fait accompli.
+**Never** auto-generate the full spec and present it as a fait accompli.
 **Never** write a section without user approval.
-**Never** contradict an existing approved GDD without flagging the conflict.
-**Always** show where decisions come from (dependency GDDs, pillars, user choices).
+**Never** contradict an existing approved spec without flagging the conflict.
+**Always** show where decisions come from (dependency specs, pillars, user choices).

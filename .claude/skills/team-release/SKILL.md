@@ -1,6 +1,6 @@
 ---
 name: team-release
-description: "Orchestrate the release team: coordinates release-manager, qa-lead, devops-engineer, and producer to execute a release from candidate to deployment."
+description: "Orchestrate the release team: coordinates release-manager, qa-lead, devops-engineer, and project-manager to execute a release from candidate to deployment."
 argument-hint: "[version number or 'next']"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Write, Edit, Bash, Task, AskUserQuestion, TodoWrite
@@ -16,7 +16,7 @@ The user must approve before moving to the next phase.
 - **release-manager** — Release branch, versioning, changelog, deployment
 - **qa-lead** — Test sign-off, regression suite, release quality gate
 - **devops-engineer** — Build pipeline, artifacts, deployment automation
-- **producer** — Go/no-go decision, stakeholder communication, scheduling
+- **project-manager** — Go/no-go decision, stakeholder communication, scheduling
 
 ## How to Delegate
 
@@ -24,14 +24,14 @@ Use the Task tool to spawn each team member as a subagent:
 - `subagent_type: release-manager` — Release branch, versioning, changelog, deployment
 - `subagent_type: qa-lead` — Test sign-off, regression suite, release quality gate
 - `subagent_type: devops-engineer` — Build pipeline, artifacts, deployment automation
-- `subagent_type: producer` — Go/no-go decision, stakeholder communication
+- `subagent_type: project-manager` — Go/no-go decision, stakeholder communication
 
 Always provide full context in each agent's prompt (version number, milestone status, known issues). Launch independent agents in parallel where the pipeline allows it (e.g., Phase 3 agents can run simultaneously).
 
 ## Pipeline
 
 ### Phase 1: Release Planning
-Delegate to **producer**:
+Delegate to **project-manager**:
 - Confirm all milestone acceptance criteria are met
 - Identify any scope items deferred from this release
 - Set the target release date and communicate to team
@@ -42,7 +42,7 @@ Delegate to **release-manager**:
 - Cut release branch from the agreed commit
 - Bump version numbers in all relevant files
 - Generate the release checklist using `/release-checklist`
-- Freeze the branch — no feature changes, bug fixes only
+- Freeze the branch — no new features, bug fixes only
 - Output: release branch name and checklist
 
 ### Phase 3: Quality Gate (parallel)
@@ -57,8 +57,8 @@ Delegate (can run in parallel with Phase 3 if resources available):
 - Output: localization and performance sign-off
 
 ### Phase 5: Go/No-Go
-Delegate to **producer**:
-- Collect sign-off from: qa-lead, release-manager, devops-engineer, technical-director
+Delegate to **project-manager**:
+- Collect sign-off from: qa-lead, release-manager, devops-engineer, technical-lead
 - Evaluate any open issues — are they blocking or can they ship?
 - Make the go/no-go call
 - Output: release decision with rationale
@@ -68,12 +68,12 @@ Delegate to **release-manager** + **devops-engineer**:
 - Tag the release in version control
 - Generate changelog using `/changelog`
 - Deploy to staging for final smoke test
-- Deploy to production
+- Deploy to production (app stores, web hosting, etc.)
 - Monitor for 48 hours post-release
 
 ### Phase 7: Post-Release
 - **release-manager**: Generate release report (what shipped, what was deferred, metrics)
-- **producer**: Update milestone tracking, communicate to stakeholders
+- **project-manager**: Update milestone tracking, communicate to stakeholders
 - **qa-lead**: Monitor incoming bug reports for regressions
 - Schedule post-release retrospective if issues occurred
 

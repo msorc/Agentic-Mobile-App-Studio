@@ -1,15 +1,18 @@
 ---
 paths:
-  - "src/networking/**"
+  - "lib/**/data/**"
+  - "lib/shared/services/**"
 ---
 
 # Network Code Rules
 
-- Server is AUTHORITATIVE for all gameplay-critical state — never trust the client
-- All network messages must be versioned for forward/backward compatibility
-- Client predicts locally, reconciles with server — implement rollback for mispredictions
-- Handle disconnection, reconnection, and host migration gracefully
-- Rate-limit all network logging to prevent log flooding
-- All networked values must specify replication strategy: reliable/unreliable, frequency, interpolation
-- Bandwidth budget: define and track per-message-type bandwidth usage
-- Security: validate all incoming packet sizes and field ranges
+- All API calls should be through repository interfaces (dependency injection)
+- Handle offline gracefully — cache data locally when possible
+- All API responses must be validated before use (null checks, type checks)
+- Use retry logic with exponential backoff for transient failures
+- Rate-limit API calls — debounce search, paginate lists
+- All API keys/tokens must be stored securely — use environment variables or secure storage
+- Log network errors at ERROR level with request context (endpoint, status code)
+- All network code belongs in the `data/` layer, never in `presentation/`
+- For REST: use `dio` package with interceptors for auth, logging, error handling
+- For Firebase: use the official SDK with offline persistence enabled

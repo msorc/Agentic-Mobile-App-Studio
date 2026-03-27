@@ -10,7 +10,7 @@ context: |
 When this skill is invoked:
 
 1. **Read the original plan** — Find the relevant document:
-   - If a feature name: read the design doc from `design/gdd/`
+   - If a feature name: read the feature spec from `design/features/`
    - If a sprint number: read the sprint plan from `production/sprints/`
    - If a milestone: read the milestone definition from `production/milestones/`
 
@@ -57,7 +57,7 @@ When this skill is invoked:
    1. **Cut**: [Items that should be removed to stay on schedule]
    2. **Defer**: [Items that can move to a future sprint/version]
    3. **Keep**: [Additions that are genuinely necessary]
-   4. **Flag**: [Items that need a decision from producer/creative-director]
+   4. **Flag**: [Items that need a decision from project-manager/product-designer]
    ```
 
 4. **Output the scope check** with a clear verdict:
@@ -69,5 +69,5 @@ When this skill is invoked:
 ### Rules
 - Scope creep is additions without corresponding cuts or timeline extensions
 - Not all additions are bad — some are discovered requirements. But they must be acknowledged and accounted for.
-- When recommending cuts, prioritize preserving the core player experience over nice-to-haves
+- When recommending cuts, prioritize preserving the core user experience over nice-to-haves
 - Always quantify scope changes — "it feels bigger" is not actionable, "+35% items" is

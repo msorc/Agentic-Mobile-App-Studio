@@ -24,17 +24,15 @@ of artifacts, and gaps that need attention. It's especially useful when:
 Analyze project structure and content:
 
 **Design Documentation** (`design/`):
-- Count GDD files in `design/gdd/*.md`
-- Check for game-concept.md, game-pillars.md, systems-index.md
-- If systems-index.md exists, count total systems vs. designed systems
+- Count feature specs in `design/features/*.md`
+- Check for app-concept.md, app-pillars.md, features-index.md
+- If features index exists, count total features vs. designed features
 - Analyze completeness (Overview, Detailed Design, Edge Cases, etc.)
-- Count narrative docs in `design/narrative/`
-- Count level designs in `design/levels/`
 
-**Source Code** (`src/`):
-- Count source files (language-agnostic)
-- Identify major systems (directories with 5+ files)
-- Check for core/, gameplay/, ai/, networking/, ui/ directories
+**Source Code** (`lib/`):
+- Count source files (Dart files)
+- Identify major feature directories
+- Check for core/, data/, domain/, presentation/ directories
 - Estimate lines of code (rough scale)
 
 **Production Artifacts** (`production/`):
@@ -51,7 +49,7 @@ Analyze project structure and content:
 - Count ADRs (Architecture Decision Records)
 - Check for overview/index documents
 
-**Tests** (`tests/`):
+**Tests** (`test/`):
 - Count test files
 - Estimate test coverage (rough heuristic)
 
@@ -63,11 +61,11 @@ auto-detect using these heuristics (check from most-advanced backward):
 
 | Stage | Indicators |
 |-------|-----------|
-| **Concept** | No game concept doc, brainstorming phase |
-| **Systems Design** | Game concept exists, systems index missing or incomplete |
-| **Technical Setup** | Systems index exists, engine not configured |
-| **Pre-Production** | Engine configured, `src/` has <10 source files |
-| **Production** | `src/` has 10+ source files, active development |
+| **Concept** | No app concept doc, brainstorming phase |
+| **Systems Design** | App concept exists, features index missing or incomplete |
+| **Technical Setup** | Features index exists, Flutter not configured |
+| **Pre-Production** | Flutter configured, `lib/` has <10 source files |
+| **Production** | `lib/` has 10+ source files, active development |
 | **Polish** | Explicit only (set by `/gate-check` Production → Polish gate) |
 | **Release** | Explicit only (set by `/gate-check` Polish → Release gate) |
 
@@ -75,15 +73,13 @@ auto-detect using these heuristics (check from most-advanced backward):
 
 **DO NOT** just list missing files. Instead, **ask clarifying questions**:
 
-- "I see combat code (`src/gameplay/combat/`) but no `design/gdd/combat-system.md`. Was this prototyped first, or should we reverse-document?"
+- "I see authentication code (`lib/features/auth/`) but no `design/features/auth.md`. Was this prototyped first, or should we reverse-document?"
 - "You have 15 ADRs but no architecture overview. Should I create one to help new contributors?"
-- "No sprint plans in `production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
-- "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet, or should we run `/map-systems`?"
+- "No sprint plans in `production/`. Are you tracking work elsewhere?"
+- "I found an app concept but no features index. Have you decomposed the concept into individual features yet, or should we run `/map-systems`?"
 - "Prototypes directory has 3 projects with no READMEs. Were these experiments, or do they need documentation?"
 
 ### 4. Generate Stage Report
-
-Use template: `.claude/docs/templates/project-stage-report.md`
 
 **Report structure**:
 ```markdown
@@ -94,7 +90,7 @@ Use template: `.claude/docs/templates/project-stage-report.md`
 
 ## Completeness Overview
 - Design: [X%] ([N] docs, [gaps])
-- Code: [X%] ([N] files, [systems])
+- Code: [X%] ([N] files, [features])
 - Architecture: [X%] ([N] ADRs, [gaps])
 - Production: [X%] ([status])
 - Tests: [X%] ([coverage estimate])
@@ -116,10 +112,10 @@ If user provided a role argument (e.g., `/project-stage-detect programmer`):
 - Code-to-docs gaps
 
 **Designer**:
-- Focus on GDD completeness, missing design sections
+- Focus on feature spec completeness, missing sections
 - Prototype documentation
 
-**Producer**:
+**Project Manager**:
 - Focus on sprint plans, milestone tracking, roadmap
 - Cross-team coordination docs
 
@@ -170,8 +166,8 @@ Wait for user approval before creating the file.
 
 After generating the report, suggest relevant next steps:
 
-- **Concept exists but no systems index?** → `/map-systems` to decompose into systems
-- **Missing design docs?** → `/reverse-document design src/[system]`
+- **Concept exists but no features index?** → `/map-systems` to decompose into features
+- **Missing design docs?** → `/reverse-document design lib/[feature]`
 - **Missing architecture docs?** → `/architecture-decision` or `/reverse-document architecture`
 - **Prototypes need documentation?** → `/reverse-document concept prototypes/[name]`
 - **No sprint plan?** → `/sprint-plan`

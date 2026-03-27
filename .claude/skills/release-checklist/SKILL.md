@@ -1,7 +1,7 @@
 ---
 name: release-checklist
 description: "Generates a comprehensive pre-release validation checklist covering build verification, certification requirements, store metadata, and launch readiness."
-argument-hint: "[platform: pc|console|mobile|all]"
+argument-hint: "[platform: ios|android|web|desktop|all]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Write
 ---
@@ -10,7 +10,7 @@ When this skill is invoked:
 
 > **Explicit invocation only**: This skill should only run when the user explicitly requests it with `/release-checklist`. Do not auto-invoke based on context matching.
 
-1. **Read the argument** for the target platform (`pc`, `console`, `mobile`,
+1. **Read the argument** for the target platform (`ios`, `android`, `web`, `desktop`,
    or `all`). If no platform is specified, default to `all`.
 
 2. **Read CLAUDE.md** for project context, version information, and platform
@@ -49,69 +49,79 @@ Generated: [Date]
 
 ### Quality Gates
 - [ ] Zero S1 (Critical) bugs
-- [ ] Zero S2 (Major) bugs -- or documented exceptions with producer approval
+- [ ] Zero S2 (Major) bugs -- or documented exceptions with project-manager approval
 - [ ] All critical path features tested and signed off by QA
 - [ ] Performance within budgets:
   - [ ] Target FPS met on minimum spec hardware
   - [ ] Memory usage within budget
   - [ ] Load times within budget
-  - [ ] No memory leaks over extended play sessions
+  - [ ] No memory leaks over extended usage
 - [ ] No regression from previous build
-- [ ] Soak test passed (4+ hours continuous play)
+- [ ] Soak test passed (4+ hours continuous use)
 
 ### Content Complete
 - [ ] All placeholder assets replaced with final versions
 - [ ] All TODO/FIXME in content files resolved or documented
-- [ ] All player-facing text proofread
+- [ ] All user-facing text proofread
 - [ ] All text localization-ready (no hardcoded strings)
-- [ ] Audio mix finalized and approved
 - [ ] Credits complete and accurate
 ```
 
 7. **Add platform-specific sections** based on the argument:
 
-For `pc`:
+For `ios`:
 ```markdown
-### Platform Requirements: PC
-- [ ] Minimum and recommended specs verified and documented
-- [ ] Keyboard+mouse controls fully functional
-- [ ] Controller support tested (Xbox, PlayStation, generic)
-- [ ] Resolution scaling tested (1080p, 1440p, 4K, ultrawide)
-- [ ] Windowed, borderless, and fullscreen modes working
-- [ ] Graphics settings save and load correctly
-- [ ] Steam/Epic/GOG SDK integrated and tested
-- [ ] Achievements functional
-- [ ] Cloud saves functional
-- [ ] Steam Deck compatibility verified (if targeting)
-```
-
-For `console`:
-```markdown
-### Platform Requirements: Console
-- [ ] TRC/TCR/Lotcheck requirements checklist complete
-- [ ] Platform-specific controller prompts display correctly
-- [ ] Suspend/resume works correctly
-- [ ] User switching handled properly
-- [ ] Network connectivity loss handled gracefully
-- [ ] Storage full scenario handled
-- [ ] Parental controls respected
-- [ ] Platform-specific achievement/trophy integration tested
-- [ ] First-party certification submission prepared
-```
-
-For `mobile`:
-```markdown
-### Platform Requirements: Mobile
-- [ ] App store guidelines compliance verified
-- [ ] All required device permissions justified and documented
+### Platform Requirements: iOS
+- [ ] App Store Review Guidelines compliance verified
+- [ ] All required permissions justified (Camera, Location, Notifications, etc.)
 - [ ] Privacy policy linked and accurate
-- [ ] Data safety/nutrition labels completed
-- [ ] Touch controls tested on multiple screen sizes
-- [ ] Battery usage within acceptable range
-- [ ] Background behavior correct (pause, resume, terminate)
-- [ ] Push notification permissions handled correctly
+- [ ] App icon and splash screen correct sizes
+- [ ] Test on multiple iOS versions and device sizes
+- [ ] Test on iPhone and iPad layouts
+- [ ] Test with Dynamic Type enabled
+- [ ] Test with VoiceOver enabled
+- [ ] Test with Reduce Motion enabled
 - [ ] In-app purchase flow tested (if applicable)
-- [ ] App size within store limits
+- [ ] Push notification setup tested (if applicable)
+```
+
+For `android`:
+```markdown
+### Platform Requirements: Android
+- [ ] Play Store policy compliance verified
+- [ ] All required permissions justified and documented
+- [ ] Privacy policy linked and accurate
+- [ ] Data safety form completed
+- [ ] App icon and splash screen correct sizes
+- [ ] Test on multiple Android versions (API 21+)
+- [ ] Test on multiple screen sizes and densities
+- [ ] Test with TalkBack enabled
+- [ ] Test with Reduced Motion enabled
+- [ ] In-app purchase flow tested (if applicable)
+- [ ] Push notification setup tested (if applicable)
+```
+
+For `web`:
+```markdown
+### Platform Requirements: Web
+- [ ] WCAG 2.1 AA accessibility compliance verified
+- [ ] Test on Chrome, Firefox, Safari, Edge
+- [ ] Responsive layout tested on mobile/tablet/desktop
+- [ ] Keyboard navigation tested
+- [ ] Screen reader tested (NVDA, VoiceOver)
+- [ ] PWA manifest and service worker configured
+- [ ] Offline functionality verified (if applicable)
+```
+
+For `desktop`:
+```markdown
+### Platform Requirements: Desktop
+- [ ] Windows, macOS, and/or Linux builds tested
+- [ ] Keyboard+mouse controls fully functional
+- [ ] Controller support tested (if applicable)
+- [ ] Resolution scaling tested (1080p, 1440p, 4K)
+- [ ] Windowed and fullscreen modes working
+- [ ] Auto-update mechanism tested (if applicable)
 ```
 
 8. **Add store and launch sections**:
@@ -122,17 +132,14 @@ For `mobile`:
   - [ ] Short description
   - [ ] Long description
   - [ ] Feature list
-  - [ ] System requirements (PC)
+  - [ ] System requirements
 - [ ] Screenshots up to date and per-platform resolution requirements met
-- [ ] Trailers up to date
+- [ ] App preview videos current (if applicable)
 - [ ] Key art and capsule images current
-- [ ] Age rating obtained and configured:
-  - [ ] ESRB
-  - [ ] PEGI
-  - [ ] Other regional ratings as required
+- [ ] Age rating obtained and configured (if applicable)
 - [ ] Legal notices, EULA, and privacy policy in place
 - [ ] Third-party license attributions complete
-- [ ] Pricing configured for all regions
+- [ ] Pricing configured for all regions (if applicable)
 
 ### Launch Readiness
 - [ ] Analytics / telemetry verified and receiving data
@@ -140,7 +147,6 @@ For `mobile`:
 - [ ] Day-one patch prepared and tested (if needed)
 - [ ] On-call team schedule set for first 72 hours
 - [ ] Community launch announcements drafted
-- [ ] Press/influencer keys prepared for distribution
 - [ ] Support team briefed on known issues and FAQ
 - [ ] Rollback plan documented (if critical issues found post-launch)
 
@@ -153,9 +159,8 @@ resolution and estimated time to address them.]
 
 **Sign-offs Required:**
 - [ ] QA Lead
-- [ ] Technical Director
-- [ ] Producer
-- [ ] Creative Director
+- [ ] Technical Lead
+- [ ] Project Manager
 ```
 
 9. **Save the checklist** to
