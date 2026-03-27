@@ -1,31 +1,35 @@
 <p align="center">
-  <h1 align="center">Claude Code Game Studios</h1>
+  <h1 align="center">Agentic Mobile App Studio</h1>
   <p align="center">
-    Turn a single Claude Code session into a full game development studio.
+    Turn a single Claude Code session into a full cross-platform mobile app development studio.
     <br />
-    48 agents. 37 workflows. One coordinated AI team.
+    24 agents. 28 workflows. One coordinated AI team.
   </p>
 </p>
 
+> **Experimental** — This project is a fork of
+> [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+> adapted for Flutter mobile app development. Created with MiniMax-M2.7 to test
+> multi-agent coordination capabilities. Not yet tested in production.
+
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
-  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-48-blueviolet" alt="48 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-37-green" alt="37 Skills"></a>
+  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-24-blueviolet" alt="24 Agents"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-28-green" alt="28 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8-orange" alt="8 Hooks"></a>
-  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-11-red" alt="11 Rules"></a>
+  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-3-red" alt="3 Rules"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built%20for-Claude%20Code-f5f5f5?logo=anthropic" alt="Built for Claude Code"></a>
-  <a href="https://ko-fi.com/donchitos"><img src="https://img.shields.io/badge/Ko--fi-Support%20this%20project-ff5e5b?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
 </p>
 
 ---
 
 ## Why This Exists
 
-Building a game solo with AI is powerful — but a single chat session has no structure. No one stops you from hardcoding magic numbers, skipping design docs, or writing spaghetti code. There's no QA pass, no design review, no one asking "does this actually fit the game's vision?"
+Building a cross-platform mobile app solo with AI is powerful — but a single chat session has no structure. No one stops you from hardcoding API keys, skipping design specs, or writing tightly coupled code. There's no architecture review, no accessibility audit, no one asking "does this actually scale to all five platforms?"
 
-**Claude Code Game Studios** solves this by giving your AI session the structure of a real studio. Instead of one general-purpose assistant, you get 48 specialized agents organized into a studio hierarchy — directors who guard the vision, department leads who own their domains, and specialists who do the hands-on work. Each agent has defined responsibilities, escalation paths, and quality gates.
+**Agentic Mobile App Studio** solves this by giving your AI session the structure of a professional mobile dev team. Instead of one general-purpose assistant, you get 24 specialized agents organized into a studio hierarchy — leads who own their domains and specialists who do the hands-on work. Each agent has defined responsibilities, escalation paths, and quality gates.
 
-The result: you still make every decision, but now you have a team that asks the right questions, catches mistakes early, and keeps your project organized from first brainstorm to launch.
+The result: you still make every decision, but now you have a team that asks the right questions, catches mistakes early, and keeps your project organized from first feature brainstorm to multi-platform release.
 
 ---
 
@@ -50,52 +54,51 @@ The result: you still make every decision, but now you have a team that asks the
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| **Agents** | 48 | Specialized subagents across design, programming, art, audio, narrative, QA, and production |
-| **Skills** | 37 | Slash commands for common workflows (`/start`, `/sprint-plan`, `/code-review`, `/brainstorm`, etc.) |
-| **Hooks** | 8 | Automated validation on commits, pushes, asset changes, session lifecycle, agent audit, and gap detection |
-| **Rules** | 11 | Path-scoped coding standards enforced when editing gameplay, engine, AI, UI, network code, and more |
-| **Templates** | 29 | Document templates for GDDs, ADRs, sprint plans, economy models, faction design, and more |
+| **Agents** | 24 | Specialized subagents across Flutter, iOS, Android, Web, Desktop, design, QA, and production |
+| **Skills** | 28 | Slash commands for common workflows (`/start`, `/sprint-plan`, `/code-review`, `/feature-brainstorm`, etc.) |
+| **Hooks** | 8 | Automated validation on commits, pushes, file changes, session lifecycle, agent audit, and gap detection |
+| **Rules** | 3 | Path-scoped coding standards for Flutter/Dart, UI code, and network code |
+| **Templates** | 5 | Document templates for PRDs, feature specs, architecture docs, sprint plans, and milestones |
 
 ## Studio Hierarchy
 
-Agents are organized into three tiers, matching how real studios operate:
+Agents are organized into three tiers:
 
 ```
-Tier 1 — Directors (Opus)
-  creative-director    technical-director    producer
+Tier 1 — Leadership (Opus)
+  technical-lead    project-manager    product-designer
 
-Tier 2 — Department Leads (Sonnet)
-  game-designer        lead-programmer       art-director
-  audio-director       narrative-director    qa-lead
-  release-manager      localization-lead
+Tier 2 — Platform & Domain Leads (Sonnet)
+  flutter-specialist     ios-specialist       android-specialist
+  web-specialist         desktop-specialist   state-management-specialist
+  mobile-ux-specialist   ui-engineer          app-architecture-specialist
+  qa-lead                release-manager
 
 Tier 3 — Specialists (Sonnet/Haiku)
-  gameplay-programmer  engine-programmer     ai-programmer
-  network-programmer   tools-programmer      ui-programmer
-  systems-designer     level-designer        economy-designer
-  technical-artist     sound-designer        writer
-  world-builder        ux-designer           prototyper
-  performance-analyst  devops-engineer       analytics-engineer
-  security-engineer    qa-tester             accessibility-specialist
-  live-ops-designer    community-manager
+  feature-developer       app-flow-designer    performance-analyst
+  integration-specialist security-engineer    accessibility-specialist
+  localization-lead      qa-tester            devops-engineer
+  analytics-engineer
 ```
 
-### Engine Specialists
+### Platform Specialists
 
-The template includes agent sets for all three major engines. Use the set that matches your project:
+The template includes platform-specific agents for all five target platforms:
 
-| Engine | Lead Agent | Sub-Specialists |
-|--------|-----------|-----------------|
-| **Godot 4** | `godot-specialist` | GDScript, Shaders, GDExtension |
-| **Unity** | `unity-specialist` | DOTS/ECS, Shaders/VFX, Addressables, UI Toolkit |
-| **Unreal Engine 5** | `unreal-specialist` | GAS, Blueprints, Replication, UMG/CommonUI |
+| Platform | Lead Agent | Sub-Specialists |
+|----------|-----------|-----------------|
+| **Flutter** | `flutter-specialist` | State management, widgets, plugins, performance |
+| **iOS** | `ios-specialist` | Swift/Objective-C, CocoaPods, SwiftUI, Xcode |
+| **Android** | `android-specialist` | Kotlin/Java, Gradle, Jetpack Compose, Play Services |
+| **Web** | `web-specialist` | Progressive Web Apps, responsive design, PWA APIs |
+| **Desktop** | `desktop-specialist` | Windows/macOS/Linux desktop patterns |
 
 ## Slash Commands
 
-Type `/` in Claude Code to access all 37 skills:
+Type `/` in Claude Code to access all 28 skills:
 
 **Reviews & Analysis**
-`/design-review` `/code-review` `/balance-check` `/asset-audit` `/scope-check` `/perf-profile` `/tech-debt`
+`/design-review` `/code-review` `/asset-audit` `/scope-check` `/perf-profile` `/tech-debt`
 
 **Production**
 `/sprint-plan` `/milestone-review` `/estimate` `/retrospective` `/bug-report`
@@ -107,16 +110,17 @@ Type `/` in Claude Code to access all 37 skills:
 `/release-checklist` `/launch-checklist` `/changelog` `/patch-notes` `/hotfix`
 
 **Creative**
-`/brainstorm` `/playtest-report` `/prototype` `/onboard` `/localize`
+`/prototype` `/onboard` `/localize`
 
 **Team Orchestration** (coordinate multiple agents on a single feature)
-`/team-combat` `/team-narrative` `/team-ui` `/team-release` `/team-polish` `/team-audio` `/team-level`
+`/team-ui` `/team-release` `/team-polish`
 
 ## Getting Started
 
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
+- [Flutter SDK](https://flutter.dev/) (3.x)
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`)
 - **Recommended**: [jq](https://jqlang.github.io/jq/) (for hook validation) and Python 3 (for JSON validation)
 
@@ -126,8 +130,8 @@ All hooks fail gracefully if optional tools are missing — nothing breaks, you 
 
 1. **Clone or use as template**:
    ```bash
-   git clone https://github.com/Donchitos/Claude-Code-Game-Studios.git my-game
-   cd my-game
+   git clone https://github.com/your-org/Agentic-Mobile-App-Studio.git my-app
+   cd my-app
    ```
 
 2. **Open Claude Code** and start a session:
@@ -139,9 +143,9 @@ All hooks fail gracefully if optional tools are missing — nothing breaks, you 
    clear design, existing work) and guides you to the right workflow. No assumptions.
 
    Or jump directly to a specific skill if you already know what you need:
-   - `/brainstorm` — explore game ideas from scratch
-   - `/setup-engine godot 4.6` — configure your engine if you already know
-   - `/project-stage-detect` — analyze an existing project
+   - `/feature-brainstorm` — explore app features from scratch
+   - `/project-stage-detect` — analyze an existing Flutter project
+   - `/sprint-plan new` — plan your first sprint
 
 ## Upgrading
 
@@ -155,24 +159,26 @@ versions, and which files are safe to overwrite vs. which need a manual merge.
 CLAUDE.md                           # Master configuration
 .claude/
   settings.json                     # Hooks, permissions, safety rules
-  agents/                           # 48 agent definitions (markdown + YAML frontmatter)
-  skills/                           # 37 slash commands (subdirectory per skill)
+  agents/                           # 24 agent definitions (markdown + YAML frontmatter)
+  skills/                           # 28 slash commands (subdirectory per skill)
   hooks/                            # 8 hook scripts (bash, cross-platform)
-  rules/                            # 11 path-scoped coding standards
+  rules/                            # 3 path-scoped coding standards
   docs/
-    quick-start.md                  # Detailed usage guide
     agent-roster.md                 # Full agent table with domains
     agent-coordination-map.md       # Delegation and escalation paths
-    setup-requirements.md           # Prerequisites and platform notes
-    templates/                      # 28 document templates
-src/                                # Game source code
-assets/                             # Art, audio, VFX, shaders, data files
-design/                             # GDDs, narrative docs, level designs
+    directory-structure.md          # Flutter Clean Architecture structure
+    technical-preferences.md        # Platform naming conventions and budgets
+    templates/                      # 5 document templates
+src/                                # App source code (Flutter/Dart)
+lib/
+  core/                             # Shared utilities, constants, extensions
+  features/                         # Feature modules (Clean Architecture)
+  shared/                           # Shared widgets, widgets, services
+test/                               # Test suites
+integration_test/                   # Integration tests
 docs/                               # Technical documentation and ADRs
-tests/                              # Test suites
-tools/                              # Build and pipeline tools
-prototypes/                         # Throwaway prototypes (isolated from src/)
-production/                         # Sprint plans, milestones, release tracking
+  engine-reference/                 # Platform reference docs
+production/                        # Sprint plans, milestones, releases
 ```
 
 ## How It Works
@@ -181,10 +187,10 @@ production/                         # Sprint plans, milestones, release tracking
 
 Agents follow a structured delegation model:
 
-1. **Vertical delegation** — directors delegate to leads, leads delegate to specialists
+1. **Vertical delegation** — leads delegate to specialists
 2. **Horizontal consultation** — same-tier agents can consult each other but can't make binding cross-domain decisions
-3. **Conflict resolution** — disagreements escalate up to the shared parent (`creative-director` for design, `technical-director` for technical)
-4. **Change propagation** — cross-department changes are coordinated by `producer`
+3. **Conflict resolution** — disagreements escalate up to the shared parent (`technical-lead` for technical, `project-manager` for production)
+4. **Change propagation** — cross-domain changes are coordinated by `project-manager`
 5. **Domain boundaries** — agents don't modify files outside their domain without explicit delegation
 
 ### Collaborative, Not Autonomous
@@ -205,11 +211,10 @@ You stay in control. The agents provide structure and expertise, not autonomy.
 
 | Hook | Trigger | What It Does |
 |------|---------|--------------|
-| `validate-commit.sh` | `git commit` | Checks for hardcoded values, TODO format, JSON validity, design doc sections |
+| `validate-commit.sh` | `git commit` | Checks for hardcoded secrets, TODO format, JSON validity, doc references |
 | `validate-push.sh` | `git push` | Warns on pushes to protected branches |
-| `validate-assets.sh` | File writes in `assets/` | Validates naming conventions and JSON structure |
 | `session-start.sh` | Session open | Loads sprint context and recent git activity |
-| `detect-gaps.sh` | Session open | Detects fresh projects (suggests `/start`) and missing documentation when code/prototypes exist |
+| `detect-gaps.sh` | Session open | Detects fresh projects (suggests `/start`) and missing documentation |
 | `pre-compact.sh` | Context compression | Preserves session progress notes |
 | `session-stop.sh` | Session close | Logs accomplishments |
 | `log-agent.sh` | Agent spawned | Audit trail of all subagent invocations |
@@ -222,24 +227,20 @@ Coding standards are automatically enforced based on file location:
 
 | Path | Enforces |
 |------|----------|
-| `src/gameplay/**` | Data-driven values, delta time usage, no UI references |
-| `src/core/**` | Zero allocations in hot paths, thread safety, API stability |
-| `src/ai/**` | Performance budgets, debuggability, data-driven parameters |
-| `src/networking/**` | Server-authoritative, versioned messages, security |
-| `src/ui/**` | No game state ownership, localization-ready, accessibility |
-| `design/gdd/**` | Required 8 sections, formula format, edge cases |
-| `tests/**` | Test naming, coverage requirements, fixture patterns |
-| `prototypes/**` | Relaxed standards, README required, hypothesis documented |
+| `lib/core/**` | Zero allocations in hot paths, thread safety, API stability |
+| `lib/features/**` | Clean Architecture layers, dependency injection, testability |
+| `lib/shared/**` | Reusability, no feature dependencies, accessibility |
+| `test/**` | Test naming, coverage requirements, fixture patterns |
+| `integration_test/**` | Integration test patterns, app lifecycle testing |
 
 ## Design Philosophy
 
-This template is grounded in professional game development practices:
+This template is grounded in professional mobile development practices:
 
-- **MDA Framework** — Mechanics, Dynamics, Aesthetics analysis for game design
-- **Self-Determination Theory** — Autonomy, Competence, Relatedness for player motivation
-- **Flow State Design** — Challenge-skill balance for player engagement
-- **Bartle Player Types** — Audience targeting and validation
-- **Verification-Driven Development** — Tests first, then implementation
+- **Clean Architecture** — Separation of domain, data, and presentation layers
+- **Platform Conventions** — Native patterns for each target platform (iOS HIG, Material Design, Web APIs)
+- **Progressive Enhancement** — Core functionality first, platform-specific polish on top
+- **Accessibility-First** — WCAG compliance built into every UI decision
 
 ## Customization
 
@@ -250,20 +251,18 @@ This is a **template**, not a locked framework. Everything is meant to be custom
 - **Modify skills** — adjust workflows to match your team's process
 - **Add rules** — create new path-scoped rules for your project's directory structure
 - **Tune hooks** — adjust validation strictness, add new checks
-- **Pick your engine** — use the Godot, Unity, or Unreal agent set (or none)
+- **Pick your state management** — use Riverpod, Bloc, Provider, or Cubit as fits your app
 
 ## Platform Support
 
-Tested on **Windows 10** with Git Bash. All hooks use POSIX-compatible patterns (`grep -E`, not `grep -P`) and include fallbacks for missing tools. Works on macOS and Linux without modification.
+Target platforms: **iOS**, **Android**, **Web**, **Windows**, **macOS**, **Linux**.
 
-## Community
-
-- **Discussions** — [GitHub Discussions](https://github.com/Donchitos/Claude-Code-Game-Studios/discussions) for questions, ideas, and showcasing what you've built
-- **Issues** — [Bug reports and feature requests](https://github.com/Donchitos/Claude-Code-Game-Studios/issues)
+All hooks use POSIX-compatible patterns (`grep -E`, not `grep -P`) and include fallbacks for missing tools.
 
 ---
 
-*This project is under active development. The agent architecture, skills, and coordination system are solid and usable today — but there's more coming.*
+> **Note**: This is an experimental project. The agent architecture, skills, and
+> coordination system are in early testing. Use at your own discretion.
 
 ## License
 
